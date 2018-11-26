@@ -15,14 +15,16 @@ using System.Windows.Shapes;
 
 namespace Battleship
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+  
     public partial class MainWindow : Window
     {
+        GameLogic game;
+
         public MainWindow()
         {
             InitializeComponent();
+            game = new GameLogic(grdMyField,null);
+            game.FieldsCreate();
         }
     }
 }

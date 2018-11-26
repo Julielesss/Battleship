@@ -10,7 +10,13 @@ namespace Battleship
 {
     class Item:Button
     {
+        public Item(Point position)
+        {
+            Position = position;
+        }
+
         public Point Position { get; set; }
+
 
 
 
