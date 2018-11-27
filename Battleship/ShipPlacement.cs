@@ -15,7 +15,7 @@ namespace Battleship
 
     class ShipPlacementInfo
     {
-        ShipsTypes typeShip;
+        public ShipsTypes typeShip { get; }
         int countShips;
         Button btnChoiceShip;
 
@@ -24,6 +24,19 @@ namespace Battleship
             this.typeShip = typeShip;
             this.countShips = (int)typeShip;
             this.btnChoiceShip = btnChoiceShip;
+        }
+
+        public bool checkButton(Button btn)
+        {
+            if (btn == btnChoiceShip)
+                return true;
+            return false;
+        }
+
+        public void checkCount()
+        {
+            if (countShips == 0)
+                btnChoiceShip.IsEnabled = false;
         }
     }
 
@@ -57,7 +70,18 @@ namespace Battleship
                 selectedPosition = Position.Horizontal;
         }
 
-
+        public void clickSelectShip(Button btn)
+        {
+            foreach(var shipInfo in ships)
+            {
+                if (shipInfo.checkButton(btn))
+                {
+                    selectedShip = shipInfo.typeShip;
+                    // показ нужного изображения 
+                    return;
+                }
+            }
+        }
 
     }
 }

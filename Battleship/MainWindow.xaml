@@ -4,8 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Battleship"
+        xmlns:sys="clr-namespace=System,assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="640" Width="860">
+        Title="MainWindow" Height="640" Width="860" MinHeight="640" MinWidth="860">
+    <Window.Resources>
+        <Style x:Key="ButtonsPlacement">
+            <Setter Property="Grid.Column" Value="0"></Setter>
+            <Setter Property="Button.Width"  Value="100"></Setter>
+            <Setter Property="Button.Height" Value="30"></Setter>
+            <EventSetter Event="Button.Click" Handler="btnPlacementSizeClick"></EventSetter> 
+         </Style>
+        
+        
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
@@ -29,6 +40,10 @@
                 <ColumnDefinition Width="0.7*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Button x:Name="btnOne" Grid.Row="0" Content="One" Style="{ StaticResource ButtonsPlacement}" Tag="{x:Type local:ShipsTypes}"></Button>
+            <Button x:Name="btnTwo" Grid.Row="1" Content="Two" Style="{ StaticResource ButtonsPlacement}" ></Button>
+            <Button x:Name="btnThree" Grid.Row="2" Content="Three" Style="{ StaticResource ButtonsPlacement}" ></Button>
+            <Button x:Name="btnFour" Grid.Row="3" Content="Four" Style="{ StaticResource ButtonsPlacement}" ></Button>
         </Grid>
     </Grid>
 </Window>

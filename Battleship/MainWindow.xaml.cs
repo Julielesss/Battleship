@@ -25,6 +25,13 @@ namespace Battleship
             InitializeComponent();
             game = new GameLogic(grdMyField,null);
             game.FieldsCreate();
+            game.InitShipPlacement(grdShipState);
         }
+
+        private void btnPlacementSizeClick(object sender, RoutedEventArgs e) // обработчик запускается только для Enable
+        {
+            
+        }
+
     }
 }
