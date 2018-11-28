@@ -14,6 +14,12 @@ namespace Battleship
         int quantityDeck;
         int quantityShip;
 
+        public ShipsTypes(int deck, int ship) : this()
+        {
+            quantityDeck = deck;
+            quantityShip = ship;
+        }
+
         public int QuantityDeck => quantityDeck;
         public int QuantityShip => quantityShip;
 
@@ -65,12 +71,11 @@ namespace Battleship
                 if (10 - p.X + 1 >= sh.SelectedShip.QuantityDeck)
                     return true;
                 else return false;
-
             }
             else
                 if (10 - p.Y + 1 >= sh.SelectedShip.QuantityDeck)
-                return true;
-            else return false;
-          }
+                    return true;
+                else return false;
+         }
     }
 }

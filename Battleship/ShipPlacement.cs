@@ -16,13 +16,11 @@ namespace Battleship
     class ShipPlacementInfo
     {
         public ShipsTypes typeShip { get; }
-        int countShips;
         Button btnChoiceShip;
 
         public ShipPlacementInfo(ShipsTypes typeShip, Button btnChoiceShip)
         {
             this.typeShip = typeShip;
-            this.countShips = typeShip.QuantityShip;
             this.btnChoiceShip = btnChoiceShip;
         }
 
@@ -35,7 +33,7 @@ namespace Battleship
 
         public void checkCount()
         {
-            if (countShips == 0)
+            if (typeShip.QuantityShip == 0)
                 btnChoiceShip.IsEnabled = false;
         }
     }
@@ -54,16 +52,16 @@ namespace Battleship
         public ShipPlacement()
         {
             ships = new List<ShipPlacementInfo>();
-            selectedShip = ShipsTypes.FourDeck;
+            selectedShip = new ShipsTypes(4, 1);
             selectedPosition = Position.Horizontal;
         }
 
         public void InitShips(Button one, Button two, Button three, Button four)
         {
-            ships.Add(new ShipPlacementInfo(ShipsTypes.OneDeck, one));
-            ships.Add(new ShipPlacementInfo(ShipsTypes.TwoDeck, two));
-            ships.Add(new ShipPlacementInfo(ShipsTypes.ThreeDeck, three));
-            ships.Add(new ShipPlacementInfo(ShipsTypes.FourDeck, four));
+            ships.Add(new ShipPlacementInfo(new ShipsTypes (1, 4) , one));
+            ships.Add(new ShipPlacementInfo(new ShipsTypes(2, 3), two));
+            ships.Add(new ShipPlacementInfo(new ShipsTypes(3, 2), three));
+            ships.Add(new ShipPlacementInfo(new ShipsTypes(4, 1), four));
         }
 
         public void ChangePosition()
