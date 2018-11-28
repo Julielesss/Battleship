@@ -30,7 +30,11 @@ namespace Battleship
 
         private void btnPlacementSizeClick(object sender, RoutedEventArgs e) // обработчик запускается только для Enable
         {
-            
+            game.clickSelectShipType(sender as Button);
+        }
+        private void btnTurn_Click(object sender, RoutedEventArgs e)
+        {
+            game.btnTurn_Click(sender as Button);
         }
 
     }

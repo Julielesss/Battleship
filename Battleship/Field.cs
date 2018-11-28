@@ -14,6 +14,8 @@ namespace Battleship
         Item[,] items;
         List<Ship> ships;
 
+        public Item [,] Items => items ;
+
         public Field()
         {
             items = new Item[10, 10];
@@ -28,6 +30,7 @@ namespace Battleship
                     items[i, j] = new Item(new Point(i + 1, j + 1));
                     items[i, j].Width = items[i, j].Height = 30;
                     grid.Children.Add(items[i, j]);
+                    items[i, j].Click =// Handler;
                 }
             }
         }

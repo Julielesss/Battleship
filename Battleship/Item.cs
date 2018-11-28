@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace Battleship
 {
-    class Item:Button
+    class Item: Button
     {
         public Item(Point position)
         {
@@ -17,7 +17,7 @@ namespace Battleship
 
         public Point Position { get; set; }
 
-
+       
 
 
 

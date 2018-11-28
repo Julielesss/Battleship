@@ -44,6 +44,8 @@
             <Button x:Name="btnTwo" Grid.Row="1" Content="Two" Style="{ StaticResource ButtonsPlacement}" ></Button>
             <Button x:Name="btnThree" Grid.Row="2" Content="Three" Style="{ StaticResource ButtonsPlacement}" ></Button>
             <Button x:Name="btnFour" Grid.Row="3" Content="Four" Style="{ StaticResource ButtonsPlacement}" ></Button>
+            <Button x:Name="btnTurn" Grid.Column="1" Grid.Row= "0" Content="Turn" Style="{StaticResource ButtonsPlacement}" Click="btnTurn_Click">
+            </Button>
         </Grid>
     </Grid>
 </Window>

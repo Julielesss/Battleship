@@ -41,7 +41,7 @@ namespace Battleship
             enemyField = new Field();
             grdMy = my;
             grdEnemy = enemy;
-            placement = new ShipPlacement();
+            placement = new ShipPlacement(myField);
 
         }
 
@@ -55,7 +55,7 @@ namespace Battleship
         public void InitShipPlacement(Grid grd)
         {
             List<Button> buttons = grd.Children.OfType<Button>().ToList();
-            
+
             placement.InitShips(buttons[0], buttons[1], buttons[2], buttons[3]); // возможно это как-то переделать
         }
 
@@ -64,18 +64,10 @@ namespace Battleship
             placement.clickSelectShip(sender);
         }
 
-
-         public bool ProveState(Point p, ShipPlacement sh) { //проверка, можем ли мы поставить корабль в выбранное место
-            if (sh.SelectedPosition == Position.Horizontal)
-            {
-                if (10 - p.X + 1 >= sh.SelectedShip.QuantityDeck)
-                    return true;
-                else return false;
-            }
-            else
-                if (10 - p.Y + 1 >= sh.SelectedShip.QuantityDeck)
-                    return true;
-                else return false;
-         }
+        public void btnTurn_Click(Button sender)
+        {
+            placement.btnTurn_Click(sender);
+        }
     }
 }
+

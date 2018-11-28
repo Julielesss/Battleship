@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Battleship
@@ -13,47 +14,23 @@ namespace Battleship
         Vertical
     };
 
-    class ShipPlacementInfo
-    {
-        public ShipsTypes typeShip { get; }
-        Button btnChoiceShip;
-
-        public ShipPlacementInfo(ShipsTypes typeShip, Button btnChoiceShip)
-        {
-            this.typeShip = typeShip;
-            this.btnChoiceShip = btnChoiceShip;
-        }
-
-        public bool checkButton(Button btn)
-        {
-            if (btn == btnChoiceShip)
-                return true;
-            return false;
-        }
-
-        public void checkCount()
-        {
-            if (typeShip.QuantityShip == 0)
-                btnChoiceShip.IsEnabled = false;
-        }
-    }
-
-
     class ShipPlacement //содержит информациб о выбранном корабле, для того чтобы его выставить на поле
     {
         ShipsTypes selectedShip;
         Position selectedPosition;
         List<ShipPlacementInfo> ships;
+        Field myField;
 
         public ShipsTypes SelectedShip => selectedShip;
         public Position SelectedPosition => selectedPosition;
 
 
-        public ShipPlacement()
+        public ShipPlacement(Field field)
         {
             ships = new List<ShipPlacementInfo>();
             selectedShip = new ShipsTypes(4, 1);
             selectedPosition = Position.Horizontal;
+            myField = field;
         }
 
         public void InitShips(Button one, Button two, Button three, Button four)
@@ -83,6 +60,46 @@ namespace Battleship
                     return;
                 }
             }
+        }
+
+        public bool ProveState(Point p, ShipPlacement sh)
+        { //проверка, можем ли мы поставить корабль в выбранное место
+            if (sh.SelectedPosition == Position.Horizontal)
+            {
+                if (10 - p.X + 1 >= sh.SelectedShip.QuantityDeck)
+                {
+                    for (int i = 0; i < sh.SelectedShip.QuantityDeck; i++)
+                    {
+                        if (!myField.Items[(int)p.Y, (int)p.X + i].IsEnabled)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else return false;
+            }
+            else
+                if (10 - p.Y + 1 >= sh.SelectedShip.QuantityDeck)
+            {
+                for (int i = 0; i < sh.SelectedShip.QuantityDeck; i++)
+                {
+                    if (!myField.Items[(int)p.Y + i, (int)p.X].IsEnabled)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            else return false;
+        }
+
+        public void btnTurn_Click(Button sender)
+        {
+            if (selectedPosition == Position.Horizontal)
+                selectedPosition = Position.Vertical;
+            else
+                selectedPosition = Position.Horizontal;
         }
 
     }

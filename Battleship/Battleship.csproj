@@ -59,6 +59,7 @@
     <Compile Include="GameLogic.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="ShipPlacement.cs" />
+    <Compile Include="ShipPlacementInfo.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
