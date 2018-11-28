@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace Battleship
 {
@@ -29,10 +30,17 @@ namespace Battleship
                 {
                     items[i, j] = new Item(new Point(i + 1, j + 1));
                     items[i, j].Width = items[i, j].Height = 30;
+                    items[i, j].Click += clickItem;
+
                     grid.Children.Add(items[i, j]);
-                    items[i, j].Click =// Handler;
                 }
             }
+        }
+
+        public void clickItem(object sender, RoutedEventArgs e)
+        {
+            Item current = sender as Item;
+            current.Background = Brushes.Black;
         }
 
     }
