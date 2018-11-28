@@ -22,7 +22,7 @@ namespace Battleship
         public ShipPlacementInfo(ShipsTypes typeShip, Button btnChoiceShip)
         {
             this.typeShip = typeShip;
-            this.countShips = (int)typeShip;
+            this.countShips = typeShip.QuantityShip;
             this.btnChoiceShip = btnChoiceShip;
         }
 
@@ -41,11 +41,15 @@ namespace Battleship
     }
 
 
-    class ShipPlacement
+    class ShipPlacement //содержит информациб о выбранном корабле, для того чтобы его выставить на поле
     {
         ShipsTypes selectedShip;
         Position selectedPosition;
         List<ShipPlacementInfo> ships;
+
+        public ShipsTypes SelectedShip => selectedShip;
+        public Position SelectedPosition => selectedPosition;
+
 
         public ShipPlacement()
         {

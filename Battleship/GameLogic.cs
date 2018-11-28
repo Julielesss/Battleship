@@ -9,12 +9,14 @@ using System.Windows.Controls.Primitives;
 
 namespace Battleship
 {
-    public enum ShipsTypes
+    public struct ShipsTypes //сколько палуб выбранного корабля, и сколько таких кораблей осталось
     {
-        OneDeck = 4,
-        TwoDeck = 3,
-        ThreeDeck = 2,
-        FourDeck = 1
+        int quantityDeck;
+        int quantityShip;
+
+        public int QuantityDeck => quantityDeck;
+        public int QuantityShip => quantityShip;
+
     };
 
 
@@ -57,6 +59,18 @@ namespace Battleship
         }
 
 
-        // public void ProveState() //Настя
+         public bool ProveState(Point p, ShipPlacement sh) { //проверка, можем ли мы поставить корабль в выбранное место
+            if (sh.SelectedPosition == Position.Horizontal)
+            {
+                if (10 - p.X + 1 >= sh.SelectedShip.QuantityDeck)
+                    return true;
+                else return false;
+
+            }
+            else
+                if (10 - p.Y + 1 >= sh.SelectedShip.QuantityDeck)
+                return true;
+            else return false;
+          }
     }
 }
