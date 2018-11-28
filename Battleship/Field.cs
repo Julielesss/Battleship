@@ -19,29 +19,12 @@ namespace Battleship
 
         public Field()
         {
-            items = new Item[10, 10];
+           // items = new Item[10, 10];
             ships = new List<Ship>();
         }
-        public void Create(UniformGrid grid)
+        public void Create(Item[,] arr)
         {
-            for (int i = 0; i < 10; ++i)
-            {
-                for (int j = 0; j < 10; ++j)
-                {
-                    items[i, j] = new Item(new Point(i + 1, j + 1));
-                    items[i, j].Width = items[i, j].Height = 30;
-                    items[i, j].Click += clickItem;
-
-                    grid.Children.Add(items[i, j]);
-                }
-            }
+            items = arr;
         }
-
-        public void clickItem(object sender, RoutedEventArgs e)
-        {
-            Item current = sender as Item;
-            current.Background = Brushes.Black;
-        }
-
     }
 }

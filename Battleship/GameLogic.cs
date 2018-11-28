@@ -45,11 +45,9 @@ namespace Battleship
 
         }
 
-        public void FieldsCreate()
+        public void FieldsCreate(Item[,] arr)
         {
-            myField.Create(grdMy);
-            //enemyField.Create(gbxMy);
-
+            myField.Create(arr);
         }
 
         public void InitShipPlacement(Grid grd)
@@ -67,6 +65,13 @@ namespace Battleship
         public void btnTurn_Click(Button sender)
         {
             placement.btnTurn_Click(sender);
+        }
+
+        public void clickItem(Item sender)
+        {
+            // это должен быть метод стейт машины, по разному реагирующий на клик в зависимости от стадии игры
+            //реализация для стадии расстановки
+            placement.clickItem(sender);
         }
     }
 }

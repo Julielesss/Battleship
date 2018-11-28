@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Battleship
 {
@@ -62,15 +63,15 @@ namespace Battleship
             }
         }
 
-        public bool ProveState(Point p, ShipPlacement sh)
+        public bool ProveState(Point p)
         { //проверка, можем ли мы поставить корабль в выбранное место
-            if (sh.SelectedPosition == Position.Horizontal)
+            if (SelectedPosition == Position.Horizontal)
             {
-                if (10 - p.X + 1 >= sh.SelectedShip.QuantityDeck)
+                if (10 - p.X + 1 >= SelectedShip.QuantityDeck)
                 {
-                    for (int i = 0; i < sh.SelectedShip.QuantityDeck; i++)
+                    for (int i = 0; i < SelectedShip.QuantityDeck; i++)
                     {
-                        if (!myField.Items[(int)p.Y, (int)p.X + i].IsEnabled)
+                        if (!myField.Items[(int)p.Y, (int)p.X + i].IsEnabled) // здесь вылетаем
                         {
                             return false;
                         }
@@ -80,9 +81,9 @@ namespace Battleship
                 else return false;
             }
             else
-                if (10 - p.Y + 1 >= sh.SelectedShip.QuantityDeck)
+                if (10 - p.Y + 1 >= SelectedShip.QuantityDeck)
             {
-                for (int i = 0; i < sh.SelectedShip.QuantityDeck; i++)
+                for (int i = 0; i < SelectedShip.QuantityDeck; i++)
                 {
                     if (!myField.Items[(int)p.Y + i, (int)p.X].IsEnabled)
                     {
@@ -102,5 +103,14 @@ namespace Battleship
                 selectedPosition = Position.Horizontal;
         }
 
+        public void clickItem(Item sender)
+        {
+            if (ProveState(sender.Position))
+            {
+               // sender.IsEnabled = false;
+                sender.Background = Brushes.Aqua;
+                sender.Focusable = false; 
+            }
+        }
     }
 }

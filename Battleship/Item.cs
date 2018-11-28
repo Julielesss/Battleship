@@ -16,10 +16,5 @@ namespace Battleship
         }
 
         public Point Position { get; set; }
-
-       
-
-
-
     }
 }

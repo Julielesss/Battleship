@@ -24,7 +24,7 @@ namespace Battleship
         {
             InitializeComponent();
             game = new GameLogic(grdMyField,null);
-            game.FieldsCreate();
+            MyFieldCreate();
             game.InitShipPlacement(grdShipState);
         }
 
@@ -35,6 +35,32 @@ namespace Battleship
         private void btnTurn_Click(object sender, RoutedEventArgs e)
         {
             game.btnTurn_Click(sender as Button);
+        }
+
+        public void MyFieldCreate()
+        {
+            Item[,] items;
+            items = new Item[10, 10];
+
+            for (int i = 0; i < 10; ++i)
+            {
+                for (int j = 0; j < 10; ++j)
+                {
+                    items[i, j] = new Item(new Point(j + 1, i + 1));
+                    items[i, j].Width = items[i, j].Height = 30;
+                    items[i, j].Click += clickItem;
+
+                   
+                   grdMyField.Children.Add(items[i, j]);
+                }
+            }
+            game.FieldsCreate(items);
+        }
+
+
+        public void clickItem(object sender, RoutedEventArgs e)
+        {
+            game.clickItem(sender as Item);
         }
 
     }
