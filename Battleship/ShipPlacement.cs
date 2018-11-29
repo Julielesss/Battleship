@@ -136,6 +136,7 @@ namespace Battleship
             {
                 ships.Remove(selectedShip);
                 selectedShip = null; // может выбирать другой корабль?
+                ShowImageSelectedShip();
             }
 
             if (ships.Count() == 0) 
@@ -156,6 +157,9 @@ namespace Battleship
         {
             Image img = grdButtonsPlacement.Children.OfType<Image>().First();
             img.Source = null;
+            if (selectedShip == null)
+                return;
+
             if (selectedPosition == Position.Vertical)
                 img.Source = (ImageSource)Application.Current.Resources[selectedShip.imgPath + "V"];
             else
