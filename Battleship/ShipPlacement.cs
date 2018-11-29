@@ -71,7 +71,7 @@ namespace Battleship
                 {
                     for (int i = 0; i < SelectedShip.QuantityDeck; i++)
                     {
-                        if (!myField.Items[(int)p.Y, (int)p.X + i].IsEnabled) // здесь вылетаем
+                        if (!myField.Items[(int)p.Y-1, (int)p.X + i-1].IsEnabled) // здесь вылетаем
                         {
                             return false;
                         }
