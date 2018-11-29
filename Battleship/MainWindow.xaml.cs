@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 
 namespace Battleship
 {
-  
     public partial class MainWindow : Window
     {
         GameLogic game;
@@ -23,18 +22,9 @@ namespace Battleship
         public MainWindow()
         {
             InitializeComponent();
-            game = new GameLogic(grdMyField,null);
+            game = new GameLogic(grdMyField,null, grdShipState, new StatePlacement(game));
             MyFieldCreate();
-            game.InitShipPlacement(grdShipState);
-        }
-
-        private void btnPlacementSizeClick(object sender, RoutedEventArgs e) // обработчик запускается только для Enable
-        {
-            game.clickSelectShipType(sender as Button);
-        }
-        private void btnTurn_Click(object sender, RoutedEventArgs e)
-        {
-            game.btnTurn_Click();
+            game.InitShipPlacement();
         }
 
         public void MyFieldCreate()
@@ -56,12 +46,14 @@ namespace Battleship
             }
             game.FieldsCreate(items);
         }
-
-
         public void clickItem(object sender, RoutedEventArgs e)
         {
             game.clickItem(sender as Item);
         }
-
+        private void clickButton(object sender, RoutedEventArgs e) // обработчик запускается только для Enable
+        {
+            game.clickButton(sender as Button);
+            return;
+        }
     }
 }

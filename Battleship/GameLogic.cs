@@ -27,26 +27,30 @@ namespace Battleship
             --quantityShip;
         }
 
-    };
+    }
 
 
     class GameLogic
     {
         UniformGrid grdMy;
         UniformGrid grdEnemy;
+        Grid grdPlacement;
 
         Field myField;
         Field enemyField;
         ShipPlacement placement;
 
-        public GameLogic(UniformGrid my, UniformGrid enemy)
+        IState state;
+
+        public GameLogic(UniformGrid my, UniformGrid enemy, Grid grdPl, IState st)
         {
             myField = new Field();
             enemyField = new Field();
             grdMy = my;
             grdEnemy = enemy;
+            grdPlacement = grdPl;
             placement = new ShipPlacement(myField);
-
+            state = st;
         }
 
         public void FieldsCreate(Item[,] arr)
@@ -54,21 +58,16 @@ namespace Battleship
             myField.Create(arr);
         }
 
-        public void InitShipPlacement(Grid grd)
+        public void InitShipPlacement()
         {
-            List<Button> buttons = grd.Children.OfType<Button>().ToList();
+            List<Button> buttons = grdPlacement.Children.OfType<Button>().ToList();
 
-            placement.InitShips(buttons[0], buttons[1], buttons[2], buttons[3], grd); // возможно это как-то переделать
+            placement.InitShips(buttons[0], buttons[1], buttons[2], buttons[3], grdPlacement); // возможно это как-то переделать
         }
 
-        public void clickSelectShipType(Button sender)
+        public void clickButton(Button sender)
         {
-            placement.clickSelectShip(sender);
-        }
-
-        public void btnTurn_Click()
-        {
-            placement.btnTurn_Click();
+            placement.clickButton(sender);
         }
 
         public void clickItem(Item sender)
@@ -79,6 +78,13 @@ namespace Battleship
             sender.Focusable = false;
             placement.clickItem(sender);
         }
+
+        public void ShowPlacement()
+        {
+            grdMy.Visibility = Visibility.Visible;
+
+        }
+        
     }
 }
 

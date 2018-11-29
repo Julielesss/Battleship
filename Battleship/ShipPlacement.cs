@@ -34,7 +34,7 @@ namespace Battleship
 
         public void InitShips(Button one, Button two, Button three, Button four, Grid gr)
         {
-            ships.Add(new ShipPlacementInfo(new ShipsTypes (1, 4) , one));
+            ships.Add(new ShipPlacementInfo(new ShipsTypes (1, 4), one));
             ships.Add(new ShipPlacementInfo(new ShipsTypes(2, 3), two));
             ships.Add(new ShipPlacementInfo(new ShipsTypes(3, 2), three));
             ships.Add(new ShipPlacementInfo(new ShipsTypes(4, 1), four));
@@ -51,7 +51,7 @@ namespace Battleship
                 selectedPosition = Position.Horizontal;
         }
 
-        public void clickSelectShip(Button btn)
+        private void clickSelectShip(Button btn)
         {
             foreach(var shipInfo in ships)
             {
@@ -143,7 +143,7 @@ namespace Battleship
                 grdButtonsPlacement.Visibility = Visibility.Hidden;  // это наверное должно быть в отдельном методе 
         }
 
-        public void btnTurn_Click()
+        private void btnTurn_Click()
         {
             if (selectedPosition == Position.Horizontal)
                 selectedPosition = Position.Vertical;
@@ -164,6 +164,14 @@ namespace Battleship
                 img.Source = (ImageSource)Application.Current.Resources[selectedShip.imgPath + "V"];
             else
                 img.Source = (ImageSource)Application.Current.Resources[selectedShip.imgPath];
+        }
+
+        public void clickButton(Button sender)
+        {
+            if (sender.Tag.ToString() == "Turn")
+                btnTurn_Click();
+            else
+                clickSelectShip(sender);
         }
 
     }

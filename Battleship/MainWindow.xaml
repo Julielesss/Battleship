@@ -12,7 +12,8 @@
             <Setter Property="Grid.Column" Value="0"></Setter>
             <Setter Property="Button.Width"  Value="100"></Setter>
             <Setter Property="Button.Height" Value="30"></Setter>
-            <EventSetter Event="Button.Click" Handler="btnPlacementSizeClick"></EventSetter>
+            <Setter Property="Button.Tag" Value="Placement"></Setter>
+            <EventSetter Event="Button.Click" Handler="clickButton"></EventSetter>
         </Style>
     </Window.Resources>
     
@@ -44,8 +45,8 @@
             <Button x:Name="btnTwo" Grid.Row="1" Content="Two" Style="{ StaticResource ButtonsPlacement}" ></Button>
             <Button x:Name="btnThree" Grid.Row="2" Content="Three" Style="{ StaticResource ButtonsPlacement}" ></Button>
             <Button x:Name="btnFour" Grid.Row="3" Content="Four" Style="{ StaticResource ButtonsPlacement}" ></Button>
-            <Button x:Name="btnTurn" Grid.Column="1" Grid.Row= "0" Content="Turn" Style="{StaticResource ButtonsPlacement}" Click="btnTurn_Click"></Button>
-            <Image x:Name="imagePlacement" Height="200" Width="170" Stretch="None" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Source="{StaticResource 1Deck}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Image>
+            <Button x:Name="btnTurn" Grid.Column="1" Grid.Row= "0" Content="Turn" Style="{StaticResource ButtonsPlacement}" Tag="Turn"></Button>
+            <Image x:Name="imagePlacement" Height="200" Width="170" Stretch="None" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Image>
         </Grid>
     </Grid>
 </Window> 

@@ -58,6 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="Field.cs" />
     <Compile Include="GameLogic.cs" />
+    <Compile Include="IState.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,6 +67,7 @@
     <Compile Include="Ship.cs" />
     <Compile Include="ShipPlacement.cs" />
     <Compile Include="ShipPlacementInfo.cs" />
+    <Compile Include="StatePlacement.cs" />
     <Page Include="DictionaryImagesPlacement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
