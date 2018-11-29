@@ -34,7 +34,7 @@ namespace Battleship
         }
         private void btnTurn_Click(object sender, RoutedEventArgs e)
         {
-            game.btnTurn_Click(sender as Button);
+            game.btnTurn_Click();
         }
 
         public void MyFieldCreate()

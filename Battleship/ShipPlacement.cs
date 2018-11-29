@@ -95,22 +95,36 @@ namespace Battleship
             else return false;
         }
 
-        public void btnTurn_Click(Button sender)
+        public void clickItem(Item sender)
         {
+            if (SelectedPosition == Position.Horizontal)
+            {
+
+
+                for (int i = 0; i < SelectedShip.QuantityDeck; i++)
+                {
+                    myField.Items[(int)sender.Position.Y - 1, (int)sender.Position.X + i - 1].Background = Brushes.Green;
+                }
+
+            }
+            else
+            {
+                for (int i = 0; i < SelectedShip.QuantityDeck; i++)
+                {
+                    myField.Items[(int)sender.Position.Y - 1 + i, (int)sender.Position.X - 1].Background = Brushes.Green;
+                }
+            }
+        }
+
+
+        public void btnTurn_Click() { 
+
             if (selectedPosition == Position.Horizontal)
                 selectedPosition = Position.Vertical;
             else
                 selectedPosition = Position.Horizontal;
         }
 
-        public void clickItem(Item sender)
-        {
-            if (ProveState(sender.Position))
-            {
-               // sender.IsEnabled = false;
-                sender.Background = Brushes.Aqua;
-                sender.Focusable = false; 
-            }
-        }
+           
     }
 }

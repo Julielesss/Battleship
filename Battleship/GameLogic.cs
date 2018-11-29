@@ -62,9 +62,9 @@ namespace Battleship
             placement.clickSelectShip(sender);
         }
 
-        public void btnTurn_Click(Button sender)
+        public void btnTurn_Click()
         {
-            placement.btnTurn_Click(sender);
+            placement.btnTurn_Click();
         }
 
         public void clickItem(Item sender)
