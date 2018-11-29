@@ -9,12 +9,12 @@ using System.Windows.Controls.Primitives;
 
 namespace Battleship
 {
-    public struct ShipsTypes //сколько палуб выбранного корабля, и сколько таких кораблей осталось
+    class ShipsTypes //сколько палуб выбранного корабля, и сколько таких кораблей осталось
     {
         int quantityDeck;
         int quantityShip;
 
-        public ShipsTypes(int deck, int ship) : this()
+        public ShipsTypes(int deck, int ship)
         {
             quantityDeck = deck;
             quantityShip = ship;
@@ -22,6 +22,10 @@ namespace Battleship
 
         public int QuantityDeck => quantityDeck;
         public int QuantityShip => quantityShip;
+        public void Placed()
+        {
+            --quantityShip;
+        }
 
     };
 
@@ -54,7 +58,7 @@ namespace Battleship
         {
             List<Button> buttons = grd.Children.OfType<Button>().ToList();
 
-            placement.InitShips(buttons[0], buttons[1], buttons[2], buttons[3]); // возможно это как-то переделать
+            placement.InitShips(buttons[0], buttons[1], buttons[2], buttons[3], grd); // возможно это как-то переделать
         }
 
         public void clickSelectShipType(Button sender)
@@ -71,6 +75,8 @@ namespace Battleship
         {
             // это должен быть метод стейт машины, по разному реагирующий на клик в зависимости от стадии игры
             //реализация для стадии расстановки
+
+            sender.Focusable = false;
             placement.clickItem(sender);
         }
     }

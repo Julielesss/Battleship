@@ -26,5 +26,9 @@ namespace Battleship
         {
             items = arr;
         }
+        public void AddShip(Ship sh)
+        {
+            ships.Add(sh);
+        }
     }
 }

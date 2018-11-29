@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Battleship">
+    <BitmapImage x:Key="1Deck" UriSource="Images\1Deck.jpg"></BitmapImage>
+    <BitmapImage x:Key="1DeckV" UriSource="Images\1DeckV.jpg"></BitmapImage>
+   
+    <BitmapImage x:Key="2Deck" UriSource="Images\2Deck.jpg"></BitmapImage>
+    <BitmapImage x:Key="2DeckV" UriSource="Images\2DeckV.jpg"></BitmapImage>
+    
+    <BitmapImage x:Key="3Deck" UriSource="Images\3Deck.jpg"></BitmapImage>
+    <BitmapImage x:Key="3DeckV" UriSource="Images\3DeckV.jpg"></BitmapImage>
+    <BitmapImage x:Key="4Deck" UriSource="Images\4Deck.jpg"></BitmapImage>
+    <BitmapImage x:Key="4DeckV" UriSource="Images\4DeckV.jpg"></BitmapImage>
+</ResourceDictionary>

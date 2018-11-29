@@ -27,5 +27,9 @@ namespace Battleship
         {
             cells = points;
         }
+        public void AddPoint(Point p)
+        {
+            cells.Add(p);
+        }
     }
 }
