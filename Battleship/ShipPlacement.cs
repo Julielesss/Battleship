@@ -85,7 +85,7 @@ namespace Battleship
             {
                 for (int i = 0; i < SelectedShip.QuantityDeck; i++)
                 {
-                    if (!myField.Items[(int)p.Y + i, (int)p.X].IsEnabled)
+                    if (!myField.Items[(int)p.Y + i-1, (int)p.X-1].IsEnabled)
                     {
                         return false;
                     }
@@ -97,26 +97,27 @@ namespace Battleship
 
         public void clickItem(Item sender)
         {
-            if (SelectedPosition == Position.Horizontal)
-            {
-
-
-                for (int i = 0; i < SelectedShip.QuantityDeck; i++)
+            if (ProveState(sender.Position)){
+                if (SelectedPosition == Position.Horizontal)
                 {
-                    myField.Items[(int)sender.Position.Y - 1, (int)sender.Position.X + i - 1].Background = Brushes.Green;
-                }
 
-            }
-            else
-            {
-                for (int i = 0; i < SelectedShip.QuantityDeck; i++)
+
+                    for (int i = 0; i < SelectedShip.QuantityDeck; i++)
+                    {
+                        myField.Items[(int)sender.Position.Y - 1, (int)sender.Position.X + i - 1].Background = Brushes.Green;
+                    }
+
+                }
+                else
                 {
-                    myField.Items[(int)sender.Position.Y - 1 + i, (int)sender.Position.X - 1].Background = Brushes.Green;
+                    for (int i = 0; i < SelectedShip.QuantityDeck; i++)
+                    {
+                        myField.Items[(int)sender.Position.Y - 1 + i, (int)sender.Position.X - 1].Background = Brushes.Green;
+                    }
                 }
             }
+
         }
-
-
         public void btnTurn_Click() { 
 
             if (selectedPosition == Position.Horizontal)
