@@ -23,18 +23,9 @@ namespace Battleship
         {
             InitializeComponent();
             game = new GameLogic(grdMyField,null, grdShipState);
-            game.SetState(new StatePlacement(game));
-    
-            Start();
-        }
-
-        public void Start()
-        {
             MyFieldCreate();
-            game.Init();
-            game.Show();
+            game.SetState(new StatePlacement(game));
         }
-
 
         public void MyFieldCreate()
         {
@@ -55,6 +46,7 @@ namespace Battleship
             grdMyField.Visibility = Visibility.Hidden;
             game.FieldsCreate(items);
         }
+
         public void clickItem(object sender, RoutedEventArgs e)
         {
             game.clickItem(sender as Item, e);

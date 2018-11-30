@@ -109,7 +109,7 @@ namespace Battleship
             for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
             {
                 Image img = new Image();
-                img.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "green.jpg")); // картинка, временное дебильное решение
+                img.Source = (ImageSource)Application.Current.Resources["greenSquare"]; // картинка, временное дебильное решение
                 Item temp;
 
                 if (selectedPosition == Position.Horizontal)
@@ -162,9 +162,6 @@ namespace Battleship
             else
                 img.Source = (ImageSource)Application.Current.Resources[selectedShip.imgPath];
         }
-
-
-
 
         public void clickButton(Button sender, RoutedEventArgs e)
         {

@@ -15,6 +15,8 @@ namespace Battleship
         public StatePlacement(GameLogic g)
         {
             game = g;
+            Init();
+            Show();
         }
 
         public void Init()
