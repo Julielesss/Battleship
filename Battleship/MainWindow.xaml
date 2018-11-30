@@ -41,7 +41,7 @@
                 <ColumnDefinition Width="0.7*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnOne" Grid.Row="0" Content="One" Style="{ StaticResource ButtonsPlacement}" Tag="{x:Type local:ShipsTypes}"></Button>
+            <Button x:Name="btnOne" Grid.Row="0" Content="One" Style="{ StaticResource ButtonsPlacement}"></Button>
             <Button x:Name="btnTwo" Grid.Row="1" Content="Two" Style="{ StaticResource ButtonsPlacement}" ></Button>
             <Button x:Name="btnThree" Grid.Row="2" Content="Three" Style="{ StaticResource ButtonsPlacement}" ></Button>
             <Button x:Name="btnFour" Grid.Row="3" Content="Four" Style="{ StaticResource ButtonsPlacement}" ></Button>
