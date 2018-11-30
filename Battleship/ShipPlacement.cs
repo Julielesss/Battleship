@@ -16,7 +16,7 @@ namespace Battleship
         Vertical
     };
 
-    class ShipPlacement //содержит информацию о выбранном корабле, чтобы его выставить на поле
+    class ShipPlacement 
     {
         ShipPlacementInfo selectedShip;
         Position selectedPosition;
@@ -58,7 +58,7 @@ namespace Battleship
                 if (shipInfo.checkButton(btn))
                 {
                     selectedShip = shipInfo;
-                    ShowImageSelectedShip(); // показ нужного изображения 
+                    ShowImageSelectedShip();  // показ нужного изображения 
                     return;
                 }
             }
@@ -176,6 +176,5 @@ namespace Battleship
             if (ProveState(sender.Position))
                 SetShip(sender);
         }
-
     }
 }
