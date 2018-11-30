@@ -42,7 +42,7 @@ namespace Battleship
 
         IState state;
 
-        public GameLogic(UniformGrid my, UniformGrid enemy, Grid grdPl, IState st)
+        public GameLogic(UniformGrid my, UniformGrid enemy, Grid grdPl)
         {
             myField = new Field();
             enemyField = new Field();
@@ -50,6 +50,10 @@ namespace Battleship
             grdEnemy = enemy;
             grdPlacement = grdPl;
             placement = new ShipPlacement(myField);
+        }
+
+        public void SetState(IState st)
+        {
             state = st;
         }
 
@@ -65,26 +69,41 @@ namespace Battleship
             placement.InitShips(buttons[0], buttons[1], buttons[2], buttons[3], grdPlacement); // возможно это как-то переделать
         }
 
-        public void clickButton(Button sender)
-        {
-            placement.clickButton(sender);
-        }
-
-        public void clickItem(Item sender)
-        {
-            // это должен быть метод стейт машины, по разному реагирующий на клик в зависимости от стадии игры
-            //реализация для стадии расстановки
-
-            sender.Focusable = false;
-            placement.clickItem(sender);
-        }
-
         public void ShowPlacement()
         {
             grdMy.Visibility = Visibility.Visible;
+            grdPlacement.Visibility = Visibility.Visible;
+        }
 
+        public void clickButtonPlacement(Button sender, RoutedEventArgs e)
+        {
+            placement.clickButton(sender, e);
         }
         
+        public void clickItemPlacement(Item sender, RoutedEventArgs e)
+        {
+            sender.Focusable = false;
+            placement.clickItem(sender, e);
+        }
+
+
+
+        public void Init()
+        {
+            state.Init();
+        }
+        public void Show()
+        {
+            state.Show();
+        }
+        public void clickButton(Button sender, RoutedEventArgs e)
+        {
+            state.clickButtonHandler(sender, e);
+        }
+        public void clickItem(Item sender, RoutedEventArgs e)
+        {
+            state.clickItemHandler(sender, e);
+        }
     }
 }
 

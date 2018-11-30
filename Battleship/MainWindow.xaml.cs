@@ -22,10 +22,19 @@ namespace Battleship
         public MainWindow()
         {
             InitializeComponent();
-            game = new GameLogic(grdMyField,null, grdShipState, new StatePlacement(game));
-            MyFieldCreate();
-            game.InitShipPlacement();
+            game = new GameLogic(grdMyField,null, grdShipState);
+            game.SetState(new StatePlacement(game));
+    
+            Start();
         }
+
+        public void Start()
+        {
+            MyFieldCreate();
+            game.Init();
+            game.Show();
+        }
+
 
         public void MyFieldCreate()
         {
@@ -40,20 +49,19 @@ namespace Battleship
                     items[i, j].Width = items[i, j].Height = 30;
                     items[i, j].Click += clickItem;
 
-                   
                    grdMyField.Children.Add(items[i, j]);
                 }
             }
+            grdMyField.Visibility = Visibility.Hidden;
             game.FieldsCreate(items);
         }
         public void clickItem(object sender, RoutedEventArgs e)
         {
-            game.clickItem(sender as Item);
+            game.clickItem(sender as Item, e);
         }
         private void clickButton(object sender, RoutedEventArgs e) // обработчик запускается только для Enable
         {
-            game.clickButton(sender as Button);
-            return;
+            game.clickButton(sender as Button, e);            
         }
     }
 }

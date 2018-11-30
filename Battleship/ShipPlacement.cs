@@ -101,31 +101,28 @@ namespace Battleship
                 return false;
         }
 
-        public void clickItem(Item sender)
+
+        private void SetShip(Item sender)
         {
-            if (ProveState(sender.Position))
+            Ship currentShip = new Ship();
+
+            for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
             {
-                Ship currentShip = new Ship();
+                Image img = new Image();
+                img.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "green.jpg")); // картинка, временное дебильное решение
+                Item temp;
 
-                for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
-                {
-                    Image img = new Image();
-                    img.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "green.jpg")); // картинка, временное дебильное решение
-                    Item temp;
+                if (selectedPosition == Position.Horizontal)
+                    temp = myField.Items[(int)sender.Position.Y - 1, (int)sender.Position.X + i - 1];
+                else
+                    temp = myField.Items[(int)sender.Position.Y - 1 + i, (int)sender.Position.X - 1];
 
-                    if (selectedPosition == Position.Horizontal)
-                        temp = myField.Items[(int)sender.Position.Y - 1, (int)sender.Position.X + i - 1];
-                    else
-                       temp = myField.Items[(int)sender.Position.Y - 1 + i, (int)sender.Position.X - 1];
-
-                    temp.Content = img;
-                    temp.IsEnabled = false;
-                    currentShip.AddPoint(temp.Position);
-                }
-
-                Place(currentShip);
+                temp.Content = img;
+                temp.IsEnabled = false;
+                currentShip.AddPoint(temp.Position);
             }
 
+            Place(currentShip);
         }
 
         public void Place(Ship sh)
@@ -140,7 +137,7 @@ namespace Battleship
             }
 
             if (ships.Count() == 0) 
-                grdButtonsPlacement.Visibility = Visibility.Hidden;  // это наверное должно быть в отдельном методе 
+                grdButtonsPlacement.Visibility = Visibility.Hidden;  // это наверное должно быть в отдельном методе, возможно здесь событие
         }
 
         private void btnTurn_Click()
@@ -166,12 +163,21 @@ namespace Battleship
                 img.Source = (ImageSource)Application.Current.Resources[selectedShip.imgPath];
         }
 
-        public void clickButton(Button sender)
+
+
+
+        public void clickButton(Button sender, RoutedEventArgs e)
         {
             if (sender.Tag.ToString() == "Turn")
                 btnTurn_Click();
             else
                 clickSelectShip(sender);
+        }
+
+        public void clickItem(Item sender, RoutedEventArgs e)
+        {
+            if (ProveState(sender.Position))
+                SetShip(sender);
         }
 
     }

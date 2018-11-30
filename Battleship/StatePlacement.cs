@@ -24,17 +24,17 @@ namespace Battleship
 
         public void clickButtonHandler(Button sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            game.clickButtonPlacement(sender, e);
         }
 
         public void clickItemHandler(Item sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            game.clickItemPlacement(sender, e);
         }
 
         public void Show()
         {
-            throw new NotImplementedException();
+            game.ShowPlacement();
         }
     }
 }
