@@ -8,35 +8,34 @@ using System.Windows.Controls;
 
 namespace Battleship
 {
-    class StatePlacement : IState
+    class StatePlacement : State
     {
-        GameLogic game;
-
-        public StatePlacement(GameLogic g)
+        public StatePlacement(GameLogic g) : base(g)
+        { }
+        public override void Start()
         {
-            game = g;
             Init();
             Show();
         }
 
-        public void Init()
+        public override void Init()
         {
             game.InitShipPlacement();
         }
 
-        public void clickButtonHandler(Button sender, RoutedEventArgs e)
+        public override void Show()
+        {
+            game.ShowPlacement();
+        }
+
+        public override void clickButtonHandler(Button sender, RoutedEventArgs e)
         {
             game.clickButtonPlacement(sender, e);
         }
 
-        public void clickItemHandler(Item sender, RoutedEventArgs e)
+        public override void clickItemHandler(Item sender, RoutedEventArgs e)
         {
             game.clickItemPlacement(sender, e);
-        }
-
-        public void Show()
-        {
-            game.ShowPlacement();
         }
     }
 }

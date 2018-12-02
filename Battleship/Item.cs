@@ -14,6 +14,10 @@ namespace Battleship
         {
             Position = position;
         }
+        public Item()
+        {
+           
+        }
 
         public Point Position { get; set; }
     }

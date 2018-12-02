@@ -22,29 +22,34 @@ namespace Battleship
         public MainWindow()
         {
             InitializeComponent();
-            game = new GameLogic(grdMyField,null, grdShipState);
-            MyFieldCreate();
+            game = new GameLogic(grdMyField, grdEnemyField, grdShipState);
+            FieldsCreate();
             game.SetState(new StatePlacement(game));
+            game.Start();
         }
 
-        public void MyFieldCreate()
+        public void FieldsCreate()
         {
-            Item[,] items;
-            items = new Item[10, 10];
+            Item[,] myItems;
+            Item[,] enemyItems;
+            myItems = new Item[10, 10];
+            enemyItems = new Item[10, 10];
 
             for (int i = 0; i < 10; ++i)
             {
                 for (int j = 0; j < 10; ++j)
                 {
-                    items[i, j] = new Item(new Point(j + 1, i + 1));
-                    items[i, j].Width = items[i, j].Height = 30;
-                    items[i, j].Click += clickItem;
+                    Point pos = new Point(j + 1, i + 1);
+                    myItems[i, j] = new Item(pos);
+                    enemyItems[i, j] = new Item(pos);
 
-                   grdMyField.Children.Add(items[i, j]);
+                    myItems[i, j].Style = enemyItems[i, j].Style = (Style)TryFindResource("ItemStyle");                         
+                    grdMyField.Children.Add(myItems[i, j]);
+                    grdEnemyField.Children.Add(enemyItems[i, j]);
                 }
             }
-            grdMyField.Visibility = Visibility.Hidden;
-            game.FieldsCreate(items);
+            grdMyField.Visibility = grdEnemyField.Visibility = Visibility.Hidden;
+            game.FieldsCreate(myItems, enemyItems);
         }
 
         public void clickItem(object sender, RoutedEventArgs e)

@@ -16,6 +16,7 @@ namespace Battleship
         Vertical
     };
 
+
     class ShipPlacement 
     {
         ShipPlacementInfo selectedShip;
@@ -24,6 +25,7 @@ namespace Battleship
         Field myField;
         Grid grdButtonsPlacement;
 
+        public event Action EndPlacementEvent;
 
         public ShipPlacement(Field field)
         {
@@ -136,8 +138,11 @@ namespace Battleship
                 ShowImageSelectedShip();
             }
 
-            if (ships.Count() == 0) 
-                grdButtonsPlacement.Visibility = Visibility.Hidden;  // это наверное должно быть в отдельном методе, возможно здесь событие
+            if (ships.Count() == 0)
+            {
+                if (EndPlacementEvent != null)
+                    EndPlacementEvent.Invoke();
+            }
         }
 
         private void btnTurn_Click()

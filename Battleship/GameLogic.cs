@@ -17,9 +17,10 @@ namespace Battleship
 
         Field myField;
         Field enemyField;
-        ShipPlacement placement; 
+        ShipPlacement placement;
+        Battle battle;
 
-        IState state;
+        State state;
 
         public GameLogic(UniformGrid my, UniformGrid enemy, Grid grdPl)
         {
@@ -29,16 +30,19 @@ namespace Battleship
             grdEnemy = enemy;
             grdPlacement = grdPl;
             placement = new ShipPlacement(myField);
+            placement.EndPlacementEvent += endPlacement;
+
         }
 
-        public void SetState(IState st)
+        public void SetState(State st)
         {
             state = st;
         }
 
-        public void FieldsCreate(Item[,] arr)
+        public void FieldsCreate(Item[,] arrMy, Item[,] arrEnemy)
         {
-            myField.Create(arr);
+            myField.Create(arrMy);
+            enemyField.Create(arrEnemy);
         }
 
         public void InitShipPlacement()
@@ -65,8 +69,29 @@ namespace Battleship
             placement.clickItem(sender, e);
         }
 
+        public void InitBattle()
+        {
+            battle = new Battle(myField, enemyField, grdMy, grdEnemy); // возможно сделать по-другому
+        }
+
+        public void ShowBattle()
+        {
+            battle.Show();
+        }
+        public void clickButtonBattle(Button sender, RoutedEventArgs e)
+        {
+            battle.clickButton(sender, e);
+        }
+        public void clickItemBattle(Item sender, RoutedEventArgs e)
+        {
+            battle.clickItem(sender, e);
+        }
 
 
+        private void changeState(State st)
+        {
+            state = st;
+        }
         public void Init()
         {
             state.Init();
@@ -82,6 +107,17 @@ namespace Battleship
         public void clickItem(Item sender, RoutedEventArgs e)
         {
             state.clickItemHandler(sender, e);
+        }
+        public void endPlacement() // возможно общий обработчик для всех состояний
+        {
+            grdPlacement.Visibility = Visibility.Hidden; // мб это отдельный метод окончания состояния
+
+            changeState(new StateBattle(this));
+            Start();
+        }
+        public void Start()
+        {
+            state.Start();
         }
     }
 }
