@@ -12,12 +12,12 @@ namespace Battleship
 {
     enum Position
     {
-        Horizontal, 
+        Horizontal,
         Vertical
     };
 
 
-    class ShipPlacement 
+    class ShipPlacement
     {
         ShipPlacementInfo selectedShip;
         Position selectedPosition;
@@ -36,7 +36,7 @@ namespace Battleship
 
         public void InitShips(Button one, Button two, Button three, Button four, Grid gr)
         {
-            ships.Add(new ShipPlacementInfo(new ShipsTypes (1, 4), one));
+            ships.Add(new ShipPlacementInfo(new ShipsTypes(1, 4), one));
             ships.Add(new ShipPlacementInfo(new ShipsTypes(2, 3), two));
             ships.Add(new ShipPlacementInfo(new ShipsTypes(3, 2), three));
             ships.Add(new ShipPlacementInfo(new ShipsTypes(4, 1), four));
@@ -55,7 +55,7 @@ namespace Battleship
 
         private void clickSelectShip(Button btn)
         {
-            foreach(var shipInfo in ships)
+            foreach (var shipInfo in ships)
             {
                 if (shipInfo.checkButton(btn))
                 {
@@ -67,7 +67,7 @@ namespace Battleship
         }
 
         public bool ProveState(Point p)   //проверка, можем ли мы поставить корабль в выбранное место
-        { 
+        {
             if (selectedShip == null)
                 return false;
 
@@ -77,7 +77,7 @@ namespace Battleship
                 {
                     for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
                     {
-                        if (!myField.Items[(int)p.Y-1, (int)p.X + i-1].IsEnabled)
+                        if (!myField.Items[(int)p.Y - 1, (int)p.X + i - 1].IsEnabled)
                         {
                             return false;
                         }
@@ -92,7 +92,7 @@ namespace Battleship
             {
                 for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
                 {
-                    if (!myField.Items[(int)p.Y + i-1, (int)p.X-1].IsEnabled)
+                    if (!myField.Items[(int)p.Y + i - 1, (int)p.X - 1].IsEnabled)
                     {
                         return false;
                     }
@@ -123,6 +123,8 @@ namespace Battleship
                 temp.IsEnabled = false;
                 currentShip.AddPoint(temp.Position);
             }
+
+            turnOffItem(currentShip);
 
             Place(currentShip);
         }
@@ -181,5 +183,22 @@ namespace Battleship
             if (ProveState(sender.Position))
                 SetShip(sender);
         }
+
+        public void turnOffItem(Ship sh) {//ИСПРАВИТЬ!!!!!!!!!!!!!
+            int[,] temp = { { 0, -1 }, { 0, 1 }, { -1, 0 }, { 1, 0 }, { 1, 1 }, { -1, -1 }, { -1, 1 }, { 1, -1 } };
+            for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                   int X1 =(int)sh.Cells[i].X-1;
+                   int Y1 = (int)sh.Cells[i].Y-1;
+
+                    if (Y1+temp[j,0]-1>=0&&X1+temp[j,1]-1>=0)
+                        myField.Items[(int)sh.Cells[i].Y + temp[j, 0] - 1, (int)sh.Cells[i].X + temp[j, 1] - 1].IsEnabled = false;
+                }
+            }
+        }
+        
+        
     }
 }

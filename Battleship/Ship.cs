@@ -12,6 +12,8 @@ namespace Battleship
         List<Point> cells;
         int padded;
 
+        public List<Point> Cells { get => cells; set => cells = value; }
+
         public Ship()
         {
             cells = new List<Point>();
