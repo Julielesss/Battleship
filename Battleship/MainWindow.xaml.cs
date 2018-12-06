@@ -39,7 +39,7 @@ namespace Battleship
             {
                 for (int j = 0; j < 10; ++j)
                 {
-                    Point pos = new Point(j + 1, i + 1);
+                    Point pos = new Point(j+1, i+1);
                     myItems[i, j] = new Item(pos);
                     enemyItems[i, j] = new Item(pos);
 

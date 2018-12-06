@@ -184,21 +184,23 @@ namespace Battleship
                 SetShip(sender);
         }
 
-        public void turnOffItem(Ship sh) {//ИСПРАВИТЬ!!!!!!!!!!!!!
+        public void turnOffItem(Ship sh)
+        {
             int[,] temp = { { 0, -1 }, { 0, 1 }, { -1, 0 }, { 1, 0 }, { 1, 1 }, { -1, -1 }, { -1, 1 }, { 1, -1 } };
             for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
-                   int X1 =(int)sh.Cells[i].X-1;
-                   int Y1 = (int)sh.Cells[i].Y-1;
 
-                    if (Y1+temp[j,0]-1>=0&&X1+temp[j,1]-1>=0)
-                        myField.Items[(int)sh.Cells[i].Y + temp[j, 0] - 1, (int)sh.Cells[i].X + temp[j, 1] - 1].IsEnabled = false;
+                    int X1 = (int)sh.Cells[i].X - 1 + temp[j, 0];
+                    int Y1 = (int)sh.Cells[i].Y - 1 + temp[j, 1];
+
+                    if (Y1 >= 0 && Y1 < 10 && X1>= 0 && X1 < 10)
+                        myField.Items[Y1, X1].IsEnabled = false;
                 }
             }
         }
-        
-        
+
+
     }
 }
