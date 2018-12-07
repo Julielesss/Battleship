@@ -12,7 +12,13 @@ namespace Battleship
         List<Point> cells;
         int padded;
 
-        public List<Point> Cells { get => cells; set => cells = value; }
+        public List<Point> Cells
+
+        {
+            get { return cells; }
+            set { cells = value; }
+
+        }
 
         public Ship()
         {
