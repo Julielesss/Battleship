@@ -26,6 +26,7 @@ namespace Battleship
             FieldsCreate();
             game.SetState(new StatePlacement(game));
             game.Start();
+
         }
 
         public void FieldsCreate()
@@ -59,6 +60,20 @@ namespace Battleship
         private void clickButton(object sender, RoutedEventArgs e) // обработчик запускается только для Enable
         {
             game.clickButton(sender as Button, e);            
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.IsEnabled = false;
+            HelloWnd helloWnd = new HelloWnd();
+            helloWnd.Closed += HelloWnd_Closed;
+            helloWnd.Show();
+
+        }
+
+        private void HelloWnd_Closed(object sender, EventArgs e)
+        {
+            this.IsEnabled = true;
         }
     }
 }

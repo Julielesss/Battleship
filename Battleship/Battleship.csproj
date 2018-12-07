@@ -59,6 +59,9 @@
     <Compile Include="Battle.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="GameLogic.cs" />
+    <Compile Include="HelloWnd.xaml.cs">
+      <DependentUpon>HelloWnd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,6 +75,10 @@
     <Compile Include="StatePlacement.cs" />
     <Compile Include="ShipsTypes.cs" />
     <Page Include="DictionaryImagesPlacement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelloWnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
