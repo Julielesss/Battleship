@@ -57,16 +57,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Battle.cs" />
+    <Compile Include="Network\Client.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="GameLogic.cs" />
     <Compile Include="HelloWnd.xaml.cs">
       <DependentUpon>HelloWnd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Network\Message.cs" />
+    <Compile Include="Network\Network.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Network\Server.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="ShipPlacement.cs" />
     <Compile Include="ShipPlacementInfo.cs" />
