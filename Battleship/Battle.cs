@@ -25,6 +25,7 @@ namespace Battleship
             grdEnemy = enemyGrid;
         }
 
+
         public void Show()
         {
             grdMy.IsEnabled = false;
