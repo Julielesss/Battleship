@@ -9,7 +9,7 @@ using System.Windows.Controls.Primitives;
 
 namespace Battleship
 {
-    class Battle
+    class Battle //Батл-бубатл
     {
         Field myField;
         Field enemyField;
