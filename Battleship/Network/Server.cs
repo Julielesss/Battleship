@@ -62,15 +62,25 @@ namespace Battleship
         }
         private void StartTcpAccept()
         {
-            try
+
+            while (tcpClient == null && isStarted)
             {
+                if (tcpServer.Pending())
+                {
                     tcpClient = tcpServer.AcceptTcpClient();
+                    break;
+                }
+                Thread.Sleep(1000);
             }
-            catch (Exception e)
-            {
-                MessageBox.Show("tcpAccept exception" + e.ToString());
-                return;
-            }
+            //try
+            //{
+            //        tcpClient = tcpServer.AcceptTcpClient();
+            //}
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show("tcpAccept exception" + e.ToString());
+            //    return;
+            //}
 
             ConnectedEvent?.Invoke();
             Receive(); // посмотреть, в каком потоке вызывается

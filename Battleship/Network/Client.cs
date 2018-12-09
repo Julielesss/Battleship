@@ -28,6 +28,7 @@ namespace Battleship
             isStarted = true;
             Task taskSearchServer = new Task(() => SearchServer(token));
             taskSearchServer.Start();
+            
 
            // SearchServer();
             
