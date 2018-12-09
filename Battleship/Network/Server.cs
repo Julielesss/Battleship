@@ -10,7 +10,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 
-namespace ClientServer
+namespace Battleship
 {
     class Server:Network
     {

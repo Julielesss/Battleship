@@ -13,4 +13,7 @@
     <BitmapImage x:Key="4DeckV" UriSource="Images\4DeckV.jpg"></BitmapImage>
 
     <BitmapImage x:Key="greenSquare" UriSource="Images\green.jpg"></BitmapImage>
+    <BitmapImage x:Key="yellowSquare" UriSource="Images\yellow.jpg"></BitmapImage>
+    <BitmapImage x:Key="redSquare" UriSource="Images\red.jpg"></BitmapImage>
+    <BitmapImage x:Key="pastSquare" UriSource="Images\Past.jpg"></BitmapImage>
 </ResourceDictionary>

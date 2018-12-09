@@ -4,37 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Drawing;
 
 
-namespace ClientServer
+
+namespace Battleship
 { 
     [Serializable]
     enum PointStatus // это наверное должно быть в классе айтема
     {
-        //мимо
-        //ранен
-        //убит
+        past,
+        wounded,
+        killed
     }
 
 
     [Serializable]
     class BaseMessage
-    {
-        
+    {     
 
     }
 
     [Serializable]
-    class MessageReady
-    {}
+    class MessageReady: BaseMessage
+    {
+    }
 
     [Serializable]
     class MessageShot:BaseMessage
     {
         public Point point { get; set; }
-        // Ship;
-
     }
 
     [Serializable]
@@ -42,5 +40,12 @@ namespace ClientServer
     {
         public Point point { get; set; }
         public PointStatus pointStatus { get; set; }
+        public Ship ship { get; set; }
     }
+
+    class MessageGameEnd : BaseMessage //при победе
+    {
+      
+    }
+
 }

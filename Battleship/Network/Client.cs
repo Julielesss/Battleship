@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace ClientServer
+namespace Battleship
 {
     class Client:Network
     {
