@@ -30,5 +30,11 @@ namespace Battleship
         {
             ships.Add(sh);
         }
+
+        public int checkShipsCount()
+        {
+            return ships.Count;
+        }
+
     }
 }

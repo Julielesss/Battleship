@@ -57,13 +57,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Battle.cs" />
+    <Compile Include="Network\Client.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="GameLogic.cs" />
+    <Compile Include="HelloWnd.xaml.cs">
+      <DependentUpon>HelloWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Network\Message.cs" />
+    <Compile Include="Network\Network.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Network\Server.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="ShipPlacement.cs" />
     <Compile Include="ShipPlacementInfo.cs" />
@@ -72,6 +79,10 @@
     <Compile Include="StatePlacement.cs" />
     <Compile Include="ShipsTypes.cs" />
     <Page Include="DictionaryImagesPlacement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelloWnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,6 +136,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\green.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\red.jpg" />
+    <Resource Include="Images\yellow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Past.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
