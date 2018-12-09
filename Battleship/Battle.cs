@@ -65,10 +65,10 @@ namespace Battleship
 
         public void killedShip(Ship ship)//при убийстве корабля
         {
-            for(ship.GetType)
-            Image img = new Image();
-            img.Source = (ImageSource)Application.Current.Resources["redSquare"];
-            myField.Items[(int)p.X, (int)p.Y].Content = img;
+            //for(ship.GetType)
+            //Image img = new Image();
+            //img.Source = (ImageSource)Application.Current.Resources["redSquare"];
+            //myField.Items[(int)p.X, (int)p.Y].Content = img;
 
         }
 

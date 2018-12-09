@@ -21,7 +21,7 @@ namespace Battleship
     {
         string title="Привет капитан";
         string tbText = "Введите свое имя:";
-        string userName;
+        public string userName { get; private set; }
         public HelloWnd()
         {
             InitializeComponent();
@@ -46,9 +46,10 @@ namespace Battleship
             }
         }
 
-        private void BTN_Click(object sender, RoutedEventArgs e)
+        private void ConnectBTN_Click(object sender, RoutedEventArgs e)
         {
             userName = textBox.Text;
+            Network.CreateClient();
             this.Close();
             
         }
@@ -56,6 +57,7 @@ namespace Battleship
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
             userName = textBox.Text;
+            Network.CreateServer();
             this.Close();
         }
     }

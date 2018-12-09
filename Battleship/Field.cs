@@ -12,6 +12,7 @@ namespace Battleship
 {
     class Field
     {
+        public string Name { get; set; }
         Item[,] items;
         List<Ship> ships;
 

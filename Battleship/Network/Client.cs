@@ -8,11 +8,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.Windows;
 
 namespace Battleship
 {
-    class Client:Network
+    class Client:BaseClientServer
     {
         public override void Init()
         {
@@ -22,7 +22,9 @@ namespace Battleship
 
         public override void Start()
         {
+            isStarted = true;
             SearchServer();
+            
         }
 
         private void SearchServer()
@@ -41,8 +43,19 @@ namespace Battleship
         }
         private void TcpConnect(IPAddress address)
         {
-            tcpClient.Connect(address, portTcp);
-            Console.WriteLine("client connected");
+            try
+            {
+                tcpClient.Connect(address, portTcp);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("tcpConnectClientError" + e.ToString());
+                return;
+            }
+            finally
+            {
+                udp.Close();
+            }
             Thread thread = new Thread(new ThreadStart(Receive));
             thread.Start();
         }

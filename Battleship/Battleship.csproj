@@ -64,6 +64,7 @@
       <DependentUpon>HelloWnd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Network\Message.cs" />
+    <Compile Include="Network\BaseClientServer.cs" />
     <Compile Include="Network\Network.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -71,13 +72,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Network\Server.cs" />
-    <Compile Include="Ship.cs" />
-    <Compile Include="ShipPlacement.cs" />
-    <Compile Include="ShipPlacementInfo.cs" />
-    <Compile Include="State.cs" />
-    <Compile Include="StateBattle.cs" />
-    <Compile Include="StatePlacement.cs" />
-    <Compile Include="ShipsTypes.cs" />
+    <Compile Include="Ships\Ship.cs" />
+    <Compile Include="Ships\ShipPlacement.cs" />
+    <Compile Include="Ships\ShipPlacementInfo.cs" />
+    <Compile Include="State\State.cs" />
+    <Compile Include="State\StateBattle.cs" />
+    <Compile Include="State\StatePlacement.cs" />
+    <Compile Include="Ships\ShipsTypes.cs" />
     <Page Include="DictionaryImagesPlacement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +145,7 @@
   <ItemGroup>
     <Resource Include="Images\Past.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -26,7 +26,6 @@ namespace Battleship
             FieldsCreate();
             game.SetState(new StatePlacement(game));
             game.Start();
-
         }
 
         public void FieldsCreate()
@@ -66,14 +65,20 @@ namespace Battleship
         {
             this.IsEnabled = false;
             HelloWnd helloWnd = new HelloWnd();
-            helloWnd.Closed += HelloWnd_Closed;
+            helloWnd.Closing += HelloWnd_Closed;
             helloWnd.Show();
 
         }
 
         private void HelloWnd_Closed(object sender, EventArgs e)
         {
+            game.SetMyName((sender as HelloWnd).userName);
             this.IsEnabled = true;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Network.Close();
         }
     }
 }

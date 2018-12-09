@@ -34,6 +34,10 @@ namespace Battleship
 
         }
 
+        public void SetMyName(string name)
+        {
+            myField.Name = name;
+        }
         public void SetState(State st)
         {
             state = st;

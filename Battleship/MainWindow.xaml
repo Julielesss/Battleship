@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Battleship"
         xmlns:sys="clr-namespace=System,assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="640" Width="860" MinHeight="640" MinWidth="860" Loaded="Window_Loaded">
+        Title="MainWindow" Height="640" Width="860" MinHeight="640" MinWidth="860" Loaded="Window_Loaded" Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="ButtonsPlacement">
             <Setter Property="Grid.Column" Value="0"></Setter>

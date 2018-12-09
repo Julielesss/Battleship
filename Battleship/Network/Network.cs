@@ -1,64 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net.Sockets;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Battleship
 {
-    abstract class Network
+    static class Network
     {
-        protected int portUdp = 17354;
-        protected int portTcp = 13859;
-        protected  UdpClient udp;
-        protected TcpClient tcpClient;
-        protected string connectMessage = "ThisIsConnectMessage";
+        static BaseClientServer network;
+        public delegate BaseMessage ReceiveHandler(BaseMessage message);
+        static public event ReceiveHandler ReceiveMessageEvent;
 
-        public delegate void ReceiveDelegate(BaseMessage mess);
-        public event ReceiveDelegate ReceivedEvent;
-
-
-        public void Send(BaseMessage message)
+        static public void CreateServer()
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            NetworkStream stream = tcpClient.GetStream();
-            MemoryStream ms = new MemoryStream();
-
-            formatter.Serialize(ms, message);
-            byte[] bytes = ms.ToArray();
-            stream.Write(bytes, 0, bytes.Length);
-        }
-
-        public void Receive()
-        {
-            var stream = tcpClient.GetStream();
-            while (true)
+            if (network == null)
             {
-                if (tcpClient.Connected == false)
-                    return;
-
-                if (stream.DataAvailable) // был stream.CanRead
-                {
-                    byte[] bytes = new byte[2048];
-                    int count = stream.Read(bytes, 0, bytes.Length);
-
-                    MemoryStream ms = new MemoryStream(bytes, 0, count);
-
-                    BinaryFormatter formatter = new BinaryFormatter();
-                    BaseMessage received = (BaseMessage)formatter.Deserialize(ms);
-
-                    ReceivedEvent?.Invoke(received);
-                }
+                network = new Server();
+                Start();
+            }
+        }
+        static public void CreateClient()
+        {
+            if (network == null)
+            {
+                network = new Client();
+                Start();
             }
         }
 
-        public abstract void Start();
-        public abstract void Init();
+        static private void Start()
+        {
+            network.Init();
+            network.ReceivedEvent += Receive;
+            network.Start();
+        }
+        static public void Send(BaseMessage message)
+        {
+            network.Send(message);
+        }
 
-
+        static public void Receive(BaseMessage message)
+        {
+            ReceiveMessageEvent?.Invoke(message);
+        }
+        static public void Close()
+        {
+            network?.Close();
+        }
     }
 }
