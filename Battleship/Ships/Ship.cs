@@ -24,18 +24,31 @@ namespace Battleship
             padded = 0;
         }
 
-        public void Shot()
+        /// <summary>
+        /// Return true if ship killed
+        /// </summary>
+        /// <returns></returns>
+        public bool Shot()
         {
-            --padded;
+            if (++padded >= cells.Count) // >= временно, пока тестим и есть вероятность повторного выстрела в клетку
+                return true;
+            return false;
         }
 
         public void MakeShip(List<Point> points)
         {
             cells = points;
+
         }
         public void AddPoint(Point p)
         {
             cells.Add(p);
+        }
+
+        public void Killed(Field field)
+        {
+            foreach (Point point in cells)
+               field.Items[(int)point.X, (int)point.Y].KillItem();
         }
     }
 }

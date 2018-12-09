@@ -39,7 +39,8 @@ namespace Battleship
         }
         public void clickItem(Item sender, RoutedEventArgs e) //Жду Синглтон
         {
-
+            ReceiveEventHandler(new MessageShot() { point = new Point(0, 0) } as BaseMessage);
+            ReceiveEventHandler(new MessageShot() { point = new Point(0, 1) } as BaseMessage);
         }
 
         public void checkAnswer() //проверяем сообщения
@@ -90,7 +91,16 @@ namespace Battleship
             if (message is MessageShot)
             {
                 MessageShot shot = (MessageShot)message;
-                
+                KeyValuePair<PointStatus, Ship> pairResult = myField.Items[(int)shot.point.X, (int)shot.point.Y].ShotMyItem(myField);
+
+                MessageResultShot answer = new MessageResultShot()
+                { point = shot.point, pairPointShip = pairResult};
+                //Network.Send(answer as BaseMessage);
+            }
+            else if (message is MessageResultShot)
+            {
+                MessageResultShot resultShot = message as MessageResultShot;
+                enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].ShotEnemy(resultShot.pairPointShip);
             }
         }
     }
