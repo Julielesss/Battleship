@@ -19,15 +19,14 @@ namespace Battleship
 
 
     [Serializable]
-    class BaseMessage
+    public class BaseMessage
     {     
 
     }
 
     [Serializable]
     class MessageReady: BaseMessage
-    {
-    }
+    {}
 
     [Serializable]
     class MessageShot:BaseMessage

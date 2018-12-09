@@ -6,11 +6,26 @@ using System.Threading.Tasks;
 
 namespace Battleship
 {
+    public delegate BaseMessage ReceiveHandler(BaseMessage message);
+
+    interface INetwork
+    {
+        void CreateServer();
+        void CreateClient();
+        void Send(BaseMessage message);
+        void Receive();
+        event Action ConnectedEvent;
+        event ReceiveHandler ReceiveMessageEvent;
+    }
+
+
     static class Network
     {
         static BaseClientServer network;
         public delegate BaseMessage ReceiveHandler(BaseMessage message);
         static public event ReceiveHandler ReceiveMessageEvent;
+
+        static public event Action ConnectedEvent;
 
         static public void CreateServer()
         {
@@ -33,6 +48,7 @@ namespace Battleship
         {
             network.Init();
             network.ReceivedEvent += Receive;
+            network.ConnectedEvent += Connected;
             network.Start();
         }
         static public void Send(BaseMessage message)
@@ -44,9 +60,14 @@ namespace Battleship
         {
             ReceiveMessageEvent?.Invoke(message);
         }
+        static public void Connected()
+        {
+            ConnectedEvent?.Invoke();
+        }
         static public void Close()
         {
             network?.Close();
+            network = null;
         }
     }
 }

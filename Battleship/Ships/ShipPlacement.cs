@@ -121,6 +121,7 @@ namespace Battleship
 
                 temp.Content = img;
                 temp.IsEnabled = false;
+                temp.ship = currentShip; // ПРОВЕРИТЬ
                 currentShip.AddPoint(temp.Position);
             }
 

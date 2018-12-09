@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,19 +47,63 @@ namespace Battleship
             }
         }
 
-        private void ConnectBTN_Click(object sender, RoutedEventArgs e)
+        private void Network_ConnectedEvent()
         {
-            userName = textBox.Text;
-            Network.CreateClient();
-            this.Close();
-            
+            Dispatcher.BeginInvoke(new ThreadStart(() => lblState.Content = "Connected"));
+            Thread.Sleep(1000);
+
+            Dispatcher.BeginInvoke(new ThreadStart(() => this.Close()));
         }
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
             userName = textBox.Text;
-            Network.CreateServer();
-            this.Close();
+            Button btn = sender as Button;
+            if (btn.Tag.ToString() == "Start")
+            {
+                Network.CreateServer();
+                connect(btn);
+            }
+            else if (btn.Tag.ToString() == "Cancel")
+            {
+                Network.Close();
+                btn.Tag = "Start";
+                btn.Content = "Создать игру";
+                lblState.Content = "";
+            }
+                   
+            //this.Close // надо закомментить строчки выше и раскомментить эту
+        }
+
+        private void ConnectBTN_Click(object sender, RoutedEventArgs e)
+        {
+            userName = textBox.Text;
+            Button btn = sender as Button;
+
+            if (btn.Tag.ToString() == "Start")
+            {
+                Network.CreateClient();
+                connect(btn);
+            }
+            else if (btn.Tag.ToString() == "Cancel")
+            {
+                Network.Close();
+                btn.Tag = "Start";
+                btn.Content = "Присоединиться к игре";
+                lblState.Content = "";
+            }
+
+            //this.Close // надо закомментить две строчки выше и раскомментить эту
+
+        }
+
+        private void connect(Button btn)
+        {
+            Network.ConnectedEvent += Network_ConnectedEvent;
+            btn.Tag = "Cancel";
+            btn.Content = "Отменить подключение";
+
+            Dispatcher.BeginInvoke(new ThreadStart(() => lblState.Content = "Connecting"));
         }
     }
 }

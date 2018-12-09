@@ -16,15 +16,16 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition ></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition> 
+            <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Name="TextBlock" Grid.Row="0" Grid.Column="0" >
-           <LineBreak/> 
+           <LineBreak/>
         </TextBlock>
         <TextBox Name="textBox" Grid.Row="0" Grid.Column="1" Height="27" TextChanged="TextBox_TextChanged" >
         </TextBox>
-        <Button Name="CreateBtn"  Content ="Создать игру" Height="50" Width="150" Grid.Row="1" Grid.Column="0" Click="CreateBtn_Click"/>
-        <Button Name="ConnectBtn" Content="Присоединиться к игре" Height="50" Width="150" Grid.Row="1" Grid.Column="2" Click="ConnectBTN_Click">
+        <Button Name="CreateBtn" Tag="Start" Content ="Создать игру" Height="50" Width="150" Grid.Row="1" Grid.Column="0" Click="CreateBtn_Click"/>
+        <Button Name="ConnectBtn" Tag="Start" Content="Присоединиться к игре" Height="50" Width="150" Grid.Row="1" Grid.Column="2" Click="ConnectBTN_Click">
         </Button>
+        <Label Name="lblState" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="144"/>
     </Grid>
 </Window>

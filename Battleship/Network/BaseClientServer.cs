@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Battleship
@@ -18,8 +19,13 @@ namespace Battleship
         protected string connectMessage = "ThisIsConnectMessage";
         protected bool isStarted;
 
+        protected CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        protected CancellationToken token;
+
         public delegate void ReceiveDelegate(BaseMessage mess);
         public event ReceiveDelegate ReceivedEvent;
+        public abstract event Action ConnectedEvent;
+
 
 
         public void Send(BaseMessage message)
@@ -66,6 +72,7 @@ namespace Battleship
         public virtual void Close()
         {
             isStarted = false;
+            cancelTokenSource.Cancel();
             tcpClient?.Close();
         }
 

@@ -17,6 +17,8 @@ namespace Battleship
     {
         TcpListener tcpServer;
 
+        public override event Action ConnectedEvent;
+
         public override void Init()
         {
             udp = new UdpClient();
@@ -28,39 +30,52 @@ namespace Battleship
         public override void Start()
         {
             isStarted = true;
-            Thread threadBroadcast = new Thread(new ThreadStart(StartBroadcast));
-            Thread threadTcp = new Thread(new ThreadStart(StartTcpAccept));
-            threadBroadcast.Start();
-            threadTcp.Start();
+   
+            Task taskBroadcast = new Task(() => StartBroadcast(), token);
+            taskBroadcast.Start();
+
+            Task taskTcpAccept = new Task(() => StartTcpAccept(), token);
+            taskTcpAccept.Start();
+
+            //Thread threadBroadcast = new Thread(new ThreadStart(StartBroadcast));
+            //Thread threadTcp = new Thread(new ThreadStart(StartTcpAccept));
+            //threadBroadcast.Start();
+           // threadTcp.Start();
         }
 
         private void StartBroadcast()
         {
-            while (isStarted && tcpClient == null)
-            {
-                byte[] bytes = Encoding.ASCII.GetBytes(connectMessage);
-                udp.Send(bytes, bytes.Length, new IPEndPoint(IPAddress.Broadcast, portUdp));
-                Thread.Sleep(5000);
-            }
-        }
-        private void StartTcpAccept()
-        {
             try
             {
-                if (isStarted)
-                    tcpClient = tcpServer.AcceptTcpClient();
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("tcpAccept exception" + e.ToString());
-                return;
+                while (isStarted && tcpClient == null)
+                {
+                    byte[] bytes = Encoding.ASCII.GetBytes(connectMessage);
+                    udp.Send(bytes, bytes.Length, new IPEndPoint(IPAddress.Broadcast, portUdp));
+                    Thread.Sleep(5000);
+                }
             }
             finally
             {
                 udp.Close();
             }
-            Receive();
+
         }
+        private void StartTcpAccept()
+        {
+            try
+            {
+                    tcpClient = tcpServer.AcceptTcpClient();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("tcpAccept exception" + e.ToString());
+                return;
+            }
+
+            ConnectedEvent?.Invoke();
+            Receive(); // посмотреть, в каком потоке вызывается
+        }
+
         public override void Close()
         {
             base.Close();

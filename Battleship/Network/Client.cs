@@ -14,29 +14,43 @@ namespace Battleship
 {
     class Client:BaseClientServer
     {
+        public override event Action ConnectedEvent;
+
         public override void Init()
         {
             udp = new UdpClient(portUdp);
             tcpClient = new TcpClient();
+            token = cancelTokenSource.Token;
         }
 
         public override void Start()
         {
             isStarted = true;
-            SearchServer();
+            Task taskSearchServer = new Task(() => SearchServer(token));
+            taskSearchServer.Start();
+
+           // SearchServer();
             
         }
 
-        private void SearchServer()
+        private void SearchServer(CancellationToken token)
         {
             while (true)
             {
+                if (token.IsCancellationRequested)
+                {
+                    udp.Close();
+                    return;
+                }
                 IPEndPoint remoteIp = null; // чтобы слушать всех
                 byte[] received = udp.Receive(ref remoteIp);
 
                 if (Encoding.ASCII.GetString(received) == connectMessage) 
                 {
-                    TcpConnect(remoteIp.Address);
+                    Task taskConnect = new Task(() => TcpConnect(remoteIp.Address), token);
+                    taskConnect.Start();
+                    //TcpConnect(remoteIp.Address);
+                    udp.Close();
                     return;
                 }
             }
@@ -52,12 +66,13 @@ namespace Battleship
                 MessageBox.Show("tcpConnectClientError" + e.ToString());
                 return;
             }
-            finally
-            {
-                udp.Close();
-            }
-            Thread thread = new Thread(new ThreadStart(Receive));
-            thread.Start();
+
+            ConnectedEvent?.Invoke();
+            Task taskReceive = new Task(() => Receive(), token);
+            taskReceive.Start();
+                
+            //Thread thread = new Thread(new ThreadStart(Receive));
+            //thread.Start();
         }
     }
 }

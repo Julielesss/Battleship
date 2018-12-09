@@ -10,15 +10,16 @@ namespace Battleship
 {
     class Item: Button
     {
+        public Point Position { get; set; }
+        public Ship ship { get; set; } = null;
+
         public Item(Point position)
         {
             Position = position;
         }
         public Item()
-        {
-           
-        }
+        {  }
 
-        public Point Position { get; set; }
+       
     }
 }

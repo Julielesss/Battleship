@@ -85,5 +85,13 @@ namespace Battleship
             //показ победного сообщения пользователю
         }
 
+        public void ReceiveEventHandler(BaseMessage message)
+        {
+            if (message is MessageShot)
+            {
+                MessageShot shot = (MessageShot)message;
+                
+            }
+        }
     }
 }
