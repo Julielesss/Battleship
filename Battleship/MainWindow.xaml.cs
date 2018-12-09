@@ -39,7 +39,7 @@ namespace Battleship
             {
                 for (int j = 0; j < 10; ++j)
                 {
-                    Point pos = new Point(j+1, i+1);
+                    Point pos = new Point(j, i);
                     myItems[i, j] = new Item(pos);
                     enemyItems[i, j] = new Item(pos);
 
@@ -63,10 +63,10 @@ namespace Battleship
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.IsEnabled = false;
-            HelloWnd helloWnd = new HelloWnd();
-            helloWnd.Closing += HelloWnd_Closed;
-            helloWnd.Show();
+            //this.IsEnabled = false;
+            //HelloWnd helloWnd = new HelloWnd();
+            //helloWnd.Closing += HelloWnd_Closed;
+            //helloWnd.Show();
 
         }
 

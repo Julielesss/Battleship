@@ -73,11 +73,11 @@ namespace Battleship
 
             if (selectedPosition == Position.Horizontal)
             {
-                if (10 - p.X + 1 >= selectedShip.typeShip.QuantityDeck)
+                if (10 - p.X >= selectedShip.typeShip.QuantityDeck)
                 {
                     for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
                     {
-                        if (!myField.Items[(int)p.Y - 1, (int)p.X + i - 1].IsEnabled)
+                        if (!myField.Items[(int)p.Y , (int)p.X + i ].IsEnabled)
                         {
                             return false;
                         }
@@ -88,11 +88,11 @@ namespace Battleship
                     return false;
             }
 
-            else if (10 - p.Y + 1 >= selectedShip.typeShip.QuantityDeck)
+            else if (10 - p.Y >= selectedShip.typeShip.QuantityDeck)
             {
                 for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
                 {
-                    if (!myField.Items[(int)p.Y + i - 1, (int)p.X - 1].IsEnabled)
+                    if (!myField.Items[(int)p.Y + i , (int)p.X ].IsEnabled)
                     {
                         return false;
                     }
@@ -115,9 +115,9 @@ namespace Battleship
                 Item temp;
 
                 if (selectedPosition == Position.Horizontal)
-                    temp = myField.Items[(int)sender.Position.Y - 1, (int)sender.Position.X + i - 1];
+                    temp = myField.Items[(int)sender.Position.Y , (int)sender.Position.X + i ];
                 else
-                    temp = myField.Items[(int)sender.Position.Y - 1 + i, (int)sender.Position.X - 1];
+                    temp = myField.Items[(int)sender.Position.Y  + i, (int)sender.Position.X ];
 
                 temp.Content = img;
                 temp.IsEnabled = false;
@@ -193,8 +193,8 @@ namespace Battleship
                 for (int j = 0; j < 8; j++)
                 {
 
-                    int X1 = (int)sh.Cells[i].X - 1 + temp[j, 0];
-                    int Y1 = (int)sh.Cells[i].Y - 1 + temp[j, 1];
+                    int X1 = (int)sh.Cells[i].X  + temp[j, 0];
+                    int Y1 = (int)sh.Cells[i].Y  + temp[j, 1];
 
                     if (Y1 >= 0 && Y1 < 10 && X1>= 0 && X1 < 10)
                         myField.Items[Y1, X1].IsEnabled = false;
