@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Battleship
 {
@@ -66,6 +67,10 @@ namespace Battleship
                     }
                     Thread.Sleep(1000);
                 }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
             }
             finally
             {

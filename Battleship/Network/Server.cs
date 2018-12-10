@@ -54,6 +54,10 @@ namespace Battleship
                     Thread.Sleep(5000);
                 }
             }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
             finally
             {
                 udp.Close();

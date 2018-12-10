@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace Battleship
 {
@@ -64,7 +66,7 @@ namespace Battleship
                     int Y1 = (int)Cells[i].Y + temp[j, 1];
 
                     if (Y1 >= 0 && Y1 < 10 && X1 >= 0 && X1 < 10)
-                        field.Items[X1, Y1].IsEnabled = false;
+                        Application.Current.Dispatcher.BeginInvoke(new ThreadStart(() => field.Items[X1, Y1].IsEnabled = false));
                 }
             }
         }

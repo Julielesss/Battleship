@@ -79,7 +79,7 @@ namespace Battleship
         public void KillItem()
         {
             Status = PointStatus.killed;
-            SetImg();
+            Dispatcher.BeginInvoke(new ThreadStart(() => SetImg()));
         }
 
 

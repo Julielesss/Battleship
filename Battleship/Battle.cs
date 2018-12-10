@@ -87,7 +87,7 @@ namespace Battleship
                     //Dispatcher.BeginInvoke
                     //    (new ThreadStart(() => Item.SetImg()));
 
-                    enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].SetImg();
+                    //enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].SetImg();
                 }
                 else
                 {
