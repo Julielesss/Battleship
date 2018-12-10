@@ -24,6 +24,7 @@ namespace Battleship
         List<ShipPlacementInfo> ships;
         Field myField;
         Grid grdButtonsPlacement;
+        
 
         public event Action EndPlacementEvent;
 
@@ -31,7 +32,7 @@ namespace Battleship
         {
             ships = new List<ShipPlacementInfo>();
             selectedPosition = Position.Horizontal;
-            myField = field;
+            myField = field;            
         }
 
         public void InitShips(Button one, Button two, Button three, Button four, Grid gr)

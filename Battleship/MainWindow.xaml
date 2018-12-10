@@ -20,10 +20,10 @@
             <Setter Property="local:Item.Width" Value="30"></Setter>
             <EventSetter Event="local:Item.Click" Handler="clickItem"></EventSetter>
         </Style>
-        
+
     </Window.Resources>
-    
-    
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
@@ -39,6 +39,7 @@
         <UniformGrid Name="grdEnemyField" Grid.Row="1" Grid.Column="1" Height="300" Width="300" Rows="10" Columns="10"></UniformGrid>
         <Grid Grid.Row="0">
         </Grid>
+        <TextBlock Name="GeneralTB" Grid.Row="0" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="162,28,145,28" Width="545"></TextBlock>
         <Grid Name="grdShipState" Grid.Row="1" Grid.Column="1" Height="300" Width="300">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
