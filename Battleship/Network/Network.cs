@@ -69,5 +69,9 @@ namespace Battleship
             network?.Close();
             network = null;
         }
+        static public bool isServer()
+        {
+          return  network is Server;
+        }
     }
 }

@@ -34,6 +34,10 @@ namespace Battleship
         {
             grdMy.IsEnabled = false;
             grdMy.Visibility = grdEnemy.Visibility = Visibility.Visible;
+            if (!Network.isServer())
+                Application.Current.Dispatcher.BeginInvoke
+                                     (new ThreadStart(() => grdEnemy.IsEnabled = false));
+
         }
 
         public void clickButton(Button sender, RoutedEventArgs e)
@@ -44,6 +48,8 @@ namespace Battleship
         {
             //    ReceiveEventHandler(new MessageShot() { point = new Point(0, 0) } as BaseMessage);
             //    ReceiveEventHandler(new MessageShot() { point = new Point(0, 1) } as BaseMessage);
+            Application.Current.Dispatcher.BeginInvoke
+                        (new ThreadStart(() => grdEnemy.IsEnabled = false));
             Network.Send(new MessageShot() { point = sender.Position } as BaseMessage);
         }
 
@@ -71,6 +77,9 @@ namespace Battleship
                 MessageResultShot answer = new MessageResultShot()
                 { point = shot.point, pairPointShip = pairResult};
                 Network.Send(answer as BaseMessage);
+
+                    Application.Current.Dispatcher.BeginInvoke
+                                            (new ThreadStart(() => grdEnemy.IsEnabled = !checkAble(pairResult.Key)));
             }
             else if (message is MessageResultShot)//результат выстрела по противнику
             {
@@ -96,7 +105,17 @@ namespace Battleship
                     enemyField.AddShip(resultShot.pairPointShip.Value);
                     checkWin();
                 }
+                
+                    Application.Current.Dispatcher.BeginInvoke
+                        (new ThreadStart(() => grdEnemy.IsEnabled = checkAble(resultShot.pairPointShip.Key)));
             }
+        }
+
+        public bool checkAble(PointStatus status) {
+            if (status == PointStatus.past)
+                return false;
+            else return true;
+
         }
     }
 }
