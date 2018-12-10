@@ -39,20 +39,11 @@ namespace Battleship
         }
         public void clickItem(Item sender, RoutedEventArgs e) //Жду Синглтон
         {
-            ReceiveEventHandler(new MessageShot() { point = new Point(0, 0) } as BaseMessage);
-            ReceiveEventHandler(new MessageShot() { point = new Point(0, 1) } as BaseMessage);
+            //    ReceiveEventHandler(new MessageShot() { point = new Point(0, 0) } as BaseMessage);
+            //    ReceiveEventHandler(new MessageShot() { point = new Point(0, 1) } as BaseMessage);
+            Network.Send(new MessageShot() { point = sender.Position } as BaseMessage);
         }
 
-
-
-        public void killedShip(Ship ship)//при убийстве корабля
-        {
-            //for(ship.GetType)
-            //Image img = new Image();
-            //img.Source = (ImageSource)Application.Current.Resources["redSquare"];
-            //myField.Items[(int)p.X, (int)p.Y].Content = img;
-
-        }
 
         public void checkWin()
         {
@@ -76,12 +67,25 @@ namespace Battleship
 
                 MessageResultShot answer = new MessageResultShot()
                 { point = shot.point, pairPointShip = pairResult};
-                //Network.Send(answer as BaseMessage);
+                Network.Send(answer as BaseMessage);
             }
             else if (message is MessageResultShot)//результат выстрела по противнику
             {
                 MessageResultShot resultShot = message as MessageResultShot;
-                enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].ShotEnemy(resultShot.pairPointShip);
+
+                enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].Status = resultShot.pairPointShip.Key;
+
+                if (resultShot.pairPointShip.Key != PointStatus.killed)
+                {
+                    enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].SetImg();
+                }
+                else
+                {
+                    resultShot.pairPointShip.Value.Killed(enemyField);
+                    resultShot.pairPointShip.Value.turnOffItem(enemyField);
+                    enemyField.AddShip(resultShot.pairPointShip.Value);
+                    checkWin();
+                }
             }
         }
     }

@@ -13,7 +13,7 @@ namespace Battleship
     {
         public Point Position { get; set; }
         public Ship ship { get; set; } = null;
-        PointStatus status;
+        public PointStatus Status { get; set; }
 
         public Item(Point position)
         {
@@ -22,42 +22,42 @@ namespace Battleship
         public Item()
         {  }
 
-        public KeyValuePair<PointStatus, Ship> ShotMyItem(Field field)//когда стреляют по нам
+        public KeyValuePair<PointStatus, Ship> ShotMyItem(Field field)
         {
             KeyValuePair<PointStatus, Ship> pairResult;
             if (ship == null)
-                status = PointStatus.past;
+                Status = PointStatus.past;
             else
             {
                 if (ship.Shot())
                 {
                     ship.Killed(field);
-                    pairResult = new KeyValuePair<PointStatus, Ship>(status, ship);
+                    pairResult = new KeyValuePair<PointStatus, Ship>(Status, ship);
                     return pairResult;
                 }
                 else
-                    status = PointStatus.wounded;
+                    Status = PointStatus.wounded;
             }
             SetImg();
-            pairResult = new KeyValuePair<PointStatus, Ship>(status, null);
+            pairResult = new KeyValuePair<PointStatus, Ship>(Status, null);
             return pairResult;
         }
 
-        private void SetImg()
+        public void SetImg()
         {
-            if (status == PointStatus.past)
+            if (Status == PointStatus.past)
             {
                 Image img = new Image();
                 img.Source = (ImageSource)Application.Current.Resources["pastSquare"];
                 this.Content = img;
             }
-            else if (status == PointStatus.wounded)
+            else if (Status == PointStatus.wounded)
             {
                 Image img = new Image();
                 img.Source = (ImageSource)Application.Current.Resources["yellowSquare"];
                 this.Content = img;
             }
-            else if (status == PointStatus.killed)
+            else if (Status == PointStatus.killed)
             {
                 Image img = new Image();
                 img.Source = (ImageSource)Application.Current.Resources["redSquare"];
@@ -67,7 +67,7 @@ namespace Battleship
 
         public void ShotEnemy(KeyValuePair<PointStatus, Ship> pair) // это при работе с чужим кораблем
         {
-            this.status = pair.Key;
+            this.Status = pair.Key;
             if (pair.Value != null)
             {
                 
@@ -76,7 +76,7 @@ namespace Battleship
 
         public void KillItem()
         {
-            status = PointStatus.killed;
+            Status = PointStatus.killed;
             SetImg();
         }
 

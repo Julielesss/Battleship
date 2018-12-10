@@ -63,10 +63,10 @@ namespace Battleship
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //this.IsEnabled = false;
-            //HelloWnd helloWnd = new HelloWnd();
-            //helloWnd.Closing += HelloWnd_Closed;
-            //helloWnd.Show();
+            this.IsEnabled = false;
+            HelloWnd helloWnd = new HelloWnd();
+            helloWnd.Closing += HelloWnd_Closed;
+            helloWnd.Show();
 
         }
 
