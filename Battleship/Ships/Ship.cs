@@ -63,7 +63,7 @@ namespace Battleship
                     int Y1 = (int)Cells[i].Y + temp[j, 1];
 
                     if (Y1 >= 0 && Y1 < 10 && X1 >= 0 && X1 < 10)
-                        field.Items[Y1, X1].IsEnabled = false;
+                        field.Items[X1, Y1].IsEnabled = false;
                 }
             }
         }
