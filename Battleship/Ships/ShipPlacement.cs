@@ -77,7 +77,7 @@ namespace Battleship
                 {
                     for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
                     {
-                        if (!myField.Items[(int)p.Y , (int)p.X + i ].IsEnabled)
+                        if (!myField.Items[(int)p.X+i , (int)p.Y ].IsEnabled)
                         {
                             return false;
                         }
@@ -92,7 +92,7 @@ namespace Battleship
             {
                 for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
                 {
-                    if (!myField.Items[(int)p.Y + i , (int)p.X ].IsEnabled)
+                    if (!myField.Items[(int)p.X , (int)p.Y+i ].IsEnabled)
                     {
                         return false;
                     }
@@ -115,9 +115,9 @@ namespace Battleship
                 Item temp;
 
                 if (selectedPosition == Position.Horizontal)
-                    temp = myField.Items[(int)sender.Position.Y , (int)sender.Position.X + i ];
+                    temp = myField.Items[(int)sender.Position.X+i , (int)sender.Position.Y ];
                 else
-                    temp = myField.Items[(int)sender.Position.Y  + i, (int)sender.Position.X ];
+                    temp = myField.Items[(int)sender.Position.X, (int)sender.Position.Y +i];
 
                 temp.Content = img;
                 temp.IsEnabled = false;

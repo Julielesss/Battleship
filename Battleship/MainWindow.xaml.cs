@@ -40,12 +40,12 @@ namespace Battleship
                 for (int j = 0; j < 10; ++j)
                 {
                     Point pos = new Point(j, i);
-                    myItems[i, j] = new Item(pos);
-                    enemyItems[i, j] = new Item(pos);
+                    myItems[j, i] = new Item(pos);
+                    enemyItems[j, i] = new Item(pos);
 
-                    myItems[i, j].Style = enemyItems[i, j].Style = (Style)TryFindResource("ItemStyle");                         
-                    grdMyField.Children.Add(myItems[i, j]);
-                    grdEnemyField.Children.Add(enemyItems[i, j]);
+                    myItems[j, i].Style = enemyItems[j, i].Style = (Style)TryFindResource("ItemStyle");                         
+                    grdMyField.Children.Add(myItems[j, i]);
+                    grdEnemyField.Children.Add(enemyItems[j, i]);
                 }
             }
             grdMyField.Visibility = grdEnemyField.Visibility = Visibility.Hidden;
