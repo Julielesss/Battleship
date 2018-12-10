@@ -31,16 +31,23 @@ namespace Battleship
 
         public void Send(BaseMessage message)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
+            try
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
 
-            NetworkStream stream = tcpClient.GetStream();
-            MemoryStream ms = new MemoryStream();
+                NetworkStream stream = tcpClient.GetStream();
+                MemoryStream ms = new MemoryStream();
 
-            formatter.Serialize(ms, message);
-            byte[] bytes = ms.ToArray();
-            stream.Write(bytes, 0, bytes.Length);
-            //stream.Close();
-            ms.Close();
+                formatter.Serialize(ms, message);
+                byte[] bytes = ms.ToArray();
+                stream.Write(bytes, 0, bytes.Length);
+                //stream.Close();
+                ms.Close();
+            }
+            catch(InvalidOperationException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
 
         public void Receive()
@@ -81,9 +88,12 @@ namespace Battleship
         public abstract void Start();
         public abstract void Init();
         public virtual void Close()
-        {
+        { 
             isStarted = false;
+            this.Send(new MessageGameStatus() { Status = GameStatus.Disconnect } as BaseMessage); // проверить, как раблотает при отсутствии второй стороны
             cancelTokenSource.Cancel();
+            udp.Close();
+
             tcpClient?.Close();
         }
 

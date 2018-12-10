@@ -36,24 +36,32 @@ namespace Battleship
 
         private void SearchServer(CancellationToken token)
         {
-            while (true)
+            try
             {
-                if (token.IsCancellationRequested)
+                while (true)
                 {
-                    udp.Close();
-                    return;
-                }
-                IPEndPoint remoteIp = null; // чтобы слушать всех
-                byte[] received = udp.Receive(ref remoteIp);
+                    if (token.IsCancellationRequested)
+                        break;
+                   
+                    IPEndPoint remoteIp = null; // чтобы слушать всех
+                    byte[] received = udp.Receive(ref remoteIp);
 
-                if (Encoding.ASCII.GetString(received) == connectMessage) 
-                {
-                    Task taskConnect = new Task(() => TcpConnect(remoteIp.Address), token);
-                    taskConnect.Start();
-                    //TcpConnect(remoteIp.Address);
-                    udp.Close();
-                    return;
+                    if (Encoding.ASCII.GetString(received) == connectMessage)
+                    {
+                        Task taskConnect = new Task(() => TcpConnect(remoteIp.Address), token);
+                        taskConnect.Start();
+                        //TcpConnect(remoteIp.Address);
+                        break;
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                udp.Close();
             }
         }
         private void TcpConnect(IPAddress address)

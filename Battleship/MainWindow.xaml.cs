@@ -72,6 +72,11 @@ namespace Battleship
 
         private void HelloWnd_Closed(object sender, EventArgs e)
         {
+            if ((sender as HelloWnd).isConnected == false)
+            {
+                Application.Current.Shutdown();
+                return;
+            }
             game.SetMyName((sender as HelloWnd).userName);
             this.IsEnabled = true;
         }

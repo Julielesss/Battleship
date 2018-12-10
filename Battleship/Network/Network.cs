@@ -6,19 +6,6 @@ using System.Threading.Tasks;
 
 namespace Battleship
 {
-    public delegate BaseMessage ReceiveHandler(BaseMessage message);
-
-    interface INetwork
-    {
-        void CreateServer();
-        void CreateClient();
-        void Send(BaseMessage message);
-        void Receive();
-        event Action ConnectedEvent;
-        event ReceiveHandler ReceiveMessageEvent;
-    }
-
-
     static class Network
     {
         static BaseClientServer network;

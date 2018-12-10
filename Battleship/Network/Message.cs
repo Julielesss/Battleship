@@ -17,16 +17,23 @@ namespace Battleship
         killed
     }
 
+    [Serializable]
+    enum GameStatus
+    {
+        Ready,
+        Disconnect, 
+        Win
+    };
 
     [Serializable]
     public class BaseMessage
-    {     
-
-    }
+    {   }
 
     [Serializable]
-    class MessageReady: BaseMessage
-    {}
+    class MessageGameStatus : BaseMessage
+    {
+        public GameStatus Status {get; set;}
+    }
 
     [Serializable]
     class MessageShot:BaseMessage
@@ -42,10 +49,4 @@ namespace Battleship
         //public PointStatus pointStatus { get; set; }
         //public Ship ship { get; set; }
     }
-
-    class MessageGameEnd : BaseMessage //при победе
-    {
-      
-    }
-
 }

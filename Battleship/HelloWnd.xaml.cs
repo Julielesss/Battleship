@@ -20,9 +20,11 @@ namespace Battleship
     /// </summary>
     public partial class HelloWnd : Window
     {
-        string title="Привет капитан";
+        string title = "Привет капитан";
         string tbText = "Введите свое имя:";
         public string userName { get; private set; }
+        public bool isConnected { get; set; } = false;
+
         public HelloWnd()
         {
             InitializeComponent();
@@ -50,6 +52,7 @@ namespace Battleship
         private void Network_ConnectedEvent()
         {
             Dispatcher.BeginInvoke(new ThreadStart(() => lblState.Content = "Connected"));
+            isConnected = true;
             Thread.Sleep(1000);
 
             Dispatcher.BeginInvoke(new ThreadStart(() => this.Close()));
