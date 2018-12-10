@@ -62,12 +62,14 @@ namespace Battleship
         }
         private void StartTcpAccept()
         {
-
             while (tcpClient == null && isStarted)
             {
                 if (tcpServer.Pending())
                 {
                     tcpClient = tcpServer.AcceptTcpClient();
+
+                    ConnectedEvent?.Invoke();
+                    Receive(); // посмотреть, в каком потоке вызывается
                     break;
                 }
                 Thread.Sleep(1000);
@@ -82,8 +84,6 @@ namespace Battleship
             //    return;
             //}
 
-            ConnectedEvent?.Invoke();
-            Receive(); // посмотреть, в каком потоке вызывается
         }
 
         public override void Close()

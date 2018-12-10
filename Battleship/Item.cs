@@ -22,7 +22,7 @@ namespace Battleship
         public Item()
         {  }
 
-        public KeyValuePair<PointStatus, Ship> ShotMyItem(Field field)
+        public KeyValuePair<PointStatus, Ship> ShotMyItem(Field field)//когда стреляют по нам
         {
             KeyValuePair<PointStatus, Ship> pairResult;
             if (ship == null)

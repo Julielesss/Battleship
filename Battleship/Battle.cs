@@ -43,26 +43,7 @@ namespace Battleship
             ReceiveEventHandler(new MessageShot() { point = new Point(0, 1) } as BaseMessage);
         }
 
-        public void checkAnswer() //проверяем сообщения
-        {
 
-        }
-
-        public void pastItem(Point p)
-        {
-            Image img = new Image();
-            img.Source = (ImageSource)Application.Current.Resources["pastSquare"];
-            myField.Items[(int)p.X, (int)p.Y].Content = img;
-
-        }
-
-        public void wundedShip(Point p)//при ранении
-        {
-
-            Image img = new Image();
-            img.Source = (ImageSource)Application.Current.Resources["yellowSquare"];
-            myField.Items[(int)p.X, (int)p.Y].Content = img;
-        }
 
         public void killedShip(Ship ship)//при убийстве корабля
         {
@@ -88,7 +69,7 @@ namespace Battleship
 
         public void ReceiveEventHandler(BaseMessage message)
         {
-            if (message is MessageShot)
+            if (message is MessageShot)//выстрел в нас
             {
                 MessageShot shot = (MessageShot)message;
                 KeyValuePair<PointStatus, Ship> pairResult = myField.Items[(int)shot.point.X, (int)shot.point.Y].ShotMyItem(myField);
@@ -97,7 +78,7 @@ namespace Battleship
                 { point = shot.point, pairPointShip = pairResult};
                 //Network.Send(answer as BaseMessage);
             }
-            else if (message is MessageResultShot)
+            else if (message is MessageResultShot)//результат выстрела по противнику
             {
                 MessageResultShot resultShot = message as MessageResultShot;
                 enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].ShotEnemy(resultShot.pairPointShip);
