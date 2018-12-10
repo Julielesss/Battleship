@@ -61,6 +61,7 @@ namespace Battleship
             try
             {
                 tcpClient.Connect(address, portTcp);
+                
             }
             catch (Exception e)
             {

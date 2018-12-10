@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using System.Windows.Threading;
+using System.Threading;
 
 namespace Battleship
 {
@@ -24,6 +26,7 @@ namespace Battleship
             enemyField = enemy;
             grdMy = myGrid;
             grdEnemy = enemyGrid;
+            Network.ReceiveMessageEvent += ReceiveEventHandler;
         }
 
 
@@ -77,6 +80,13 @@ namespace Battleship
 
                 if (resultShot.pairPointShip.Key != PointStatus.killed)
                 {
+
+                    var Item = enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y];
+                    Application.Current.Dispatcher.BeginInvoke
+                         (new ThreadStart(() => Item.SetImg()));
+                    //Dispatcher.BeginInvoke
+                    //    (new ThreadStart(() => Item.SetImg()));
+
                     enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].SetImg();
                 }
                 else

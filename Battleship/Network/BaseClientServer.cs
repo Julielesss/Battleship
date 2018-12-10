@@ -38,7 +38,7 @@ namespace Battleship
             formatter.Serialize(ms, message);
             byte[] bytes = ms.ToArray();
             stream.Write(bytes, 0, bytes.Length);
-            stream.Close();
+            //stream.Close();
             ms.Close();
         }
 
@@ -64,6 +64,7 @@ namespace Battleship
 
                         ReceivedEvent?.Invoke(received);
                     }
+                    Thread.Sleep(1000);
                 }
             }
             finally

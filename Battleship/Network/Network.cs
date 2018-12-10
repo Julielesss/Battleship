@@ -22,7 +22,7 @@ namespace Battleship
     static class Network
     {
         static BaseClientServer network;
-        public delegate BaseMessage ReceiveHandler(BaseMessage message);
+        public delegate void ReceiveHandler(BaseMessage message);
         static public event ReceiveHandler ReceiveMessageEvent;
 
         static public event Action ConnectedEvent;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,12 +39,13 @@ namespace Battleship
                 else
                     Status = PointStatus.wounded;
             }
-            SetImg();
+            Dispatcher.BeginInvoke(new ThreadStart(() => SetImg()));
+            
             pairResult = new KeyValuePair<PointStatus, Ship>(Status, null);
             return pairResult;
         }
 
-        public void SetImg()
+       public void SetImg()
         {
             if (Status == PointStatus.past)
             {

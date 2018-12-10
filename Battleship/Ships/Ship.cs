@@ -7,6 +7,7 @@ using System.Windows;
 
 namespace Battleship
 {
+    [Serializable]
     class Ship
     {
         List<Point> cells;
