@@ -160,10 +160,15 @@ namespace Battleship
 
         private void endPlacement()
         {
-            grdPlacement.Visibility = Visibility.Hidden; // мб это отдельный метод окончания состояния
+            Application.Current.Dispatcher.BeginInvoke
+                       (new ThreadStart(() => 
+                       { grdPlacement.Visibility = Visibility.Hidden; changeState(new StateBattle(this));
+                           Start();
+                       }));
 
-            changeState(new StateBattle(this));
-            Start();
+             // мб это отдельный метод окончания состояния
+
+
         }
 
     }

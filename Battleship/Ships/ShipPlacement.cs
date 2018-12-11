@@ -190,6 +190,7 @@ namespace Battleship
                 sender.Visibility = Visibility.Hidden;
             }
             else if (sender.Tag.ToString() == "Turn")
+
                 btnTurn_Click();
             else
                 clickSelectShip(sender);
