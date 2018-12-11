@@ -12,6 +12,8 @@ namespace Battleship
         public delegate void ReceiveHandler(BaseMessage message);
         static public event ReceiveHandler ReceiveMessageEvent;
 
+        static public event ReceiveHandler ReceiveStatusEvent; 
+
         static public event Action ConnectedEvent;
 
         static public void CreateServer()
@@ -45,6 +47,9 @@ namespace Battleship
 
         static public void Receive(BaseMessage message)
         {
+            if (message is MessageGameStatus)
+                ReceiveStatusEvent?.Invoke(message);
+            else 
             ReceiveMessageEvent?.Invoke(message);
         }
         static public void Connected()
@@ -53,6 +58,7 @@ namespace Battleship
         }
         static public void Close()
         {
+           // network?.Send(new )
             network?.Close();
             network = null;
         }

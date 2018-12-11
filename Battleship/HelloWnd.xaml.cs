@@ -36,7 +36,7 @@ namespace Battleship
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+      {
             if (textBox.Text != "")
             {
                 CreateBtn.IsEnabled = true;

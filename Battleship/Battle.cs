@@ -18,14 +18,16 @@ namespace Battleship
         Field enemyField;
         UniformGrid grdMy;
         UniformGrid grdEnemy;
+        TextBlock txblInfo;
 
 
-        public Battle(Field my, Field enemy, UniformGrid myGrid, UniformGrid enemyGrid)
+        public Battle(Field my, Field enemy, UniformGrid myGrid, UniformGrid enemyGrid, TextBlock tblInfo)
         {
             myField = my;
             enemyField = enemy;
             grdMy = myGrid;
             grdEnemy = enemyGrid;
+            txblInfo = tblInfo;
             Network.ReceiveMessageEvent += ReceiveEventHandler;
         }
 
@@ -36,7 +38,7 @@ namespace Battleship
             grdMy.Visibility = grdEnemy.Visibility = Visibility.Visible;
             if (!Network.isServer())
                 Application.Current.Dispatcher.BeginInvoke
-                                     (new ThreadStart(() => grdEnemy.IsEnabled = false));
+                                     (new ThreadStart(() => changeStep(false)));
 
         }
 
@@ -49,7 +51,7 @@ namespace Battleship
             //    ReceiveEventHandler(new MessageShot() { point = new Point(0, 0) } as BaseMessage);
             //    ReceiveEventHandler(new MessageShot() { point = new Point(0, 1) } as BaseMessage);
             Application.Current.Dispatcher.BeginInvoke
-                        (new ThreadStart(() => grdEnemy.IsEnabled = false));
+                        (new ThreadStart(() => changeStep(false)));
             Network.Send(new MessageShot() { point = sender.Position } as BaseMessage);
         }
 
@@ -79,7 +81,7 @@ namespace Battleship
                 Network.Send(answer as BaseMessage);
 
                     Application.Current.Dispatcher.BeginInvoke
-                                            (new ThreadStart(() => grdEnemy.IsEnabled = !checkAble(pairResult.Key)));
+                                            (new ThreadStart(() => changeStep(!checkAble(pairResult.Key))));
             }
             else if (message is MessageResultShot)//результат выстрела по противнику
             {
@@ -93,10 +95,6 @@ namespace Battleship
                     var Item = enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y];
                     Application.Current.Dispatcher.BeginInvoke
                          (new ThreadStart(() => Item.SetImg()));
-                    //Dispatcher.BeginInvoke
-                    //    (new ThreadStart(() => Item.SetImg()));
-
-                    //enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].SetImg();
                 }
                 else
                 {
@@ -107,7 +105,7 @@ namespace Battleship
                 }
                 
                     Application.Current.Dispatcher.BeginInvoke
-                        (new ThreadStart(() => grdEnemy.IsEnabled = checkAble(resultShot.pairPointShip.Key)));
+                        (new ThreadStart(() => changeStep(checkAble(resultShot.pairPointShip.Key))));
             }
         }
 
@@ -116,6 +114,20 @@ namespace Battleship
                 return false;
             else return true;
 
+        }
+
+        private void changeStep(bool flag)
+        {
+            grdEnemy.IsEnabled = flag;
+            if (flag)
+                txblInfo.Text = "Ваш ход";
+            else
+                txblInfo.Text = "Ход соперника";
+        }
+
+        public void DisconnectHandler()
+        {
+            changeStep(false);
         }
     }
 }

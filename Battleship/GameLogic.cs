@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Threading;
 
 namespace Battleship
 {
@@ -19,19 +21,22 @@ namespace Battleship
         Field enemyField;
         ShipPlacement placement;
         Battle battle;
-
+        TextBlock txblInfo;
         State state;
 
-        public GameLogic(UniformGrid my, UniformGrid enemy, Grid grdPl)
+        event Action DisconnectEvent;
+
+        public GameLogic(UniformGrid my, UniformGrid enemy, Grid grdPl, TextBlock tblInfo)
         {
             myField = new Field();
             enemyField = new Field();
             grdMy = my;
             grdEnemy = enemy;
             grdPlacement = grdPl;
+            txblInfo = tblInfo;
             placement = new ShipPlacement(myField);
             placement.EndPlacementEvent += endPlacement;
-
+            Network.ReceiveStatusEvent += ReceiveStatusHandler;
         }
 
         public void SetMyName(string name)
@@ -58,6 +63,7 @@ namespace Battleship
 
         public void ShowPlacement()
         {
+            txblInfo.Text = "Расставьте корабли";
             grdMy.Visibility = Visibility.Visible;
             grdPlacement.Visibility = Visibility.Visible;
         }
@@ -75,7 +81,7 @@ namespace Battleship
 
         public void InitBattle()
         {
-            battle = new Battle(myField, enemyField, grdMy, grdEnemy); // возможно сделать по-другому
+            battle = new Battle(myField, enemyField, grdMy, grdEnemy, txblInfo); // возможно сделать по-другому
         }
 
         public void ShowBattle()
@@ -122,6 +128,32 @@ namespace Battleship
         public void Start()
         {
             state.Start();
+        }
+
+        public void ReceiveStatusHandler(BaseMessage message)
+        {
+            MessageGameStatus status = message as MessageGameStatus;
+            if (status.Status == GameStatus.Disconnect)
+            {
+                DisconnectEvent?.Invoke();
+                MessageBox.Show("Ваш оппонент вышел из игры", "Сорямба", MessageBoxButton.OK);
+                Application.Current.Dispatcher.BeginInvoke
+                     (new ThreadStart(() => Application.Current.Shutdown()));
+                //Application.Current.Shutdown();
+                //Application.Current.Dispatcher.BeginInvoke
+                //     (new ThreadStart(() => txblInfo.Text = "Ваш оппонент вышел из игры"));
+
+            }
+            else if (status.Status == GameStatus.Ready)
+            {
+                Application.Current.Dispatcher.BeginInvoke
+                      (new ThreadStart(() => txblInfo.Text = "Ваш оппонент готов к игре!"));
+
+            }
+            else if (status.Status == GameStatus.Win)
+            {
+
+            }
         }
     }
 }

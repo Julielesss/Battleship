@@ -22,11 +22,11 @@ namespace Battleship
         public MainWindow()
         {
             InitializeComponent();
-            game = new GameLogic(grdMyField, grdEnemyField, grdShipState);
+            game = new GameLogic(grdMyField, grdEnemyField, grdShipState, GeneralTB);
             FieldsCreate();
             game.SetState(new StatePlacement(game));
             game.Start();
-            GeneralTB.Text = "Расставьте Ваш флот, Капитан";  //основаня Настюшкина задача
+            //GeneralTB.Text = "Расставьте Ваш флот, Капитан";  //основаня Настюшкина задача
         }
 
         public void FieldsCreate()

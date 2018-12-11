@@ -31,25 +31,52 @@ namespace Battleship
 
         public void Send(BaseMessage message)
         {
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+
             try
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-
                 NetworkStream stream = tcpClient.GetStream();
-                MemoryStream ms = new MemoryStream();
 
                 formatter.Serialize(ms, message);
                 byte[] bytes = ms.ToArray();
                 stream.Write(bytes, 0, bytes.Length);
                 //stream.Close();
-                ms.Close();
             }
-            catch(InvalidOperationException e)
+            catch (InvalidOperationException e)
             {
                 MessageBox.Show(e.ToString());
             }
+            finally
+            {
+                ms.Close();
+            }
         }
 
+            //Task.Run(() =>
+            //{
+            //    BinaryFormatter formatter = new BinaryFormatter();
+            //    MemoryStream ms = new MemoryStream();
+
+            //    try
+            //    {
+            //        NetworkStream stream = tcpClient.GetStream();
+
+            //        formatter.Serialize(ms, message);
+            //        byte[] bytes = ms.ToArray();
+            //        stream.Write(bytes, 0, bytes.Length);
+            //        //stream.Close();
+            //    }
+            //    catch (InvalidOperationException e)
+            //    {
+            //        MessageBox.Show(e.ToString());
+            //    }
+            //    finally
+            //    {
+            //        ms.Close();
+            //    }
+            //});
+        //}
         public void Receive()
         {
             NetworkStream stream = tcpClient.GetStream();
@@ -89,11 +116,10 @@ namespace Battleship
         public abstract void Init();
         public virtual void Close()
         { 
-            isStarted = false;
-            this.Send(new MessageGameStatus() { Status = GameStatus.Disconnect } as BaseMessage); // проверить, как раблотает при отсутствии второй стороны
+            this.Send(new MessageGameStatus() { Status = GameStatus.Disconnect } as BaseMessage); // проверить, как работает при отсутствии второй стороны
             cancelTokenSource.Cancel();
             udp.Close();
-
+            isStarted = false;
             tcpClient?.Close();
         }
 
