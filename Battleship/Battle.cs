@@ -57,17 +57,19 @@ namespace Battleship
         }
 
 
-        public void checkWin()
+        private void checkWin()
         {
             if (enemyField.checkShipsCount() == 10) {
                 win();
             }
         }
 
-        public void win()
+        private void win()
         {
-            MessageBox.Show("Вы выиграли", "Поздравлямба", MessageBoxButton.OK);
             Network.Win();
+            MessageBox.Show("Вы выиграли", "Поздравлямба", MessageBoxButton.OK);
+            Application.Current.Dispatcher.BeginInvoke
+                (new ThreadStart(() => Application.Current.Shutdown()));
         }
 
         public void ReceiveEventHandler(BaseMessage message)
