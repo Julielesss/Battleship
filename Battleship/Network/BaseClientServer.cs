@@ -33,51 +33,52 @@ namespace Battleship
         {
             if (tcpClient == null)
                 return;
-            BinaryFormatter formatter = new BinaryFormatter();
-            MemoryStream ms = new MemoryStream();
 
-            try
-            {
-                NetworkStream stream = tcpClient.GetStream();
+        //    BinaryFormatter formatter = new BinaryFormatter();
+        //    MemoryStream ms = new MemoryStream();
 
-                formatter.Serialize(ms, message);
-                byte[] bytes = ms.ToArray();
-                stream.Write(bytes, 0, bytes.Length);
-            }
-            catch (InvalidOperationException e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-            finally
-            {
-                ms.Close();
-            }
-        }
+        //    try
+        //    {
+        //        NetworkStream stream = tcpClient.GetStream();
 
-            //Task.Run(() =>
-            //{
-            //    BinaryFormatter formatter = new BinaryFormatter();
-            //    MemoryStream ms = new MemoryStream();
-
-            //    try
-            //    {
-            //        NetworkStream stream = tcpClient.GetStream();
-
-            //        formatter.Serialize(ms, message);
-            //        byte[] bytes = ms.ToArray();
-            //        stream.Write(bytes, 0, bytes.Length);
-            //        //stream.Close();
-            //    }
-            //    catch (InvalidOperationException e)
-            //    {
-            //        MessageBox.Show(e.ToString());
-            //    }
-            //    finally
-            //    {
-            //        ms.Close();
-            //    }
-            //});
+        //        formatter.Serialize(ms, message);
+        //        byte[] bytes = ms.ToArray();
+        //        stream.Write(bytes, 0, bytes.Length);
+        //    }
+        //    catch (InvalidOperationException e)
+        //    {
+        //        MessageBox.Show(e.ToString());
+        //    }
+        //    finally
+        //    {
+        //        ms.Close();
+        //    }
         //}
+
+        Task.Run(() =>
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+        MemoryStream ms = new MemoryStream();
+
+                try
+                {
+                    NetworkStream stream = tcpClient.GetStream();
+
+        formatter.Serialize(ms, message);
+                    byte[] bytes = ms.ToArray();
+        stream.Write(bytes, 0, bytes.Length);
+                    //stream.Close();
+                }
+                catch (InvalidOperationException e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+                finally
+                {
+                    ms.Close();
+                }
+            });
+        }
         public void Receive()
         {
             NetworkStream stream = tcpClient.GetStream();
@@ -100,7 +101,7 @@ namespace Battleship
 
                         ReceivedEvent?.Invoke(received);
                     }
-                    Thread.Sleep(1000);
+                    Thread.Sleep(500);
                 }
             }
             catch(Exception e)
@@ -116,8 +117,9 @@ namespace Battleship
         public abstract void Start();
         public abstract void Init();
         public virtual void Close()
-        { 
+        {
             this.Send(new MessageGameStatus() { Status = GameStatus.Disconnect } as BaseMessage); // проверить, как работает при отсутствии второй стороны
+
             cancelTokenSource.Cancel();
             isStarted = false;
             tcpClient?.Close();

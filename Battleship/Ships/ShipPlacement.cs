@@ -200,13 +200,6 @@ namespace Battleship
         {
             if (ProveState(sender.Position))
                 SetShip(sender);
-        }
-
-
-        public void DisconnectHandler()
-        {
-
-        }
-        
+        }        
     }
 }

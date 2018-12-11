@@ -50,8 +50,10 @@ namespace Battleship
             //    ReceiveEventHandler(new MessageShot() { point = new Point(0, 0) } as BaseMessage);
             //    ReceiveEventHandler(new MessageShot() { point = new Point(0, 1) } as BaseMessage);
             Application.Current.Dispatcher.BeginInvoke
-                        (new ThreadStart(() => changeStep(false)));
+                (new ThreadStart(() => changeStep(false)));
+            Thread.Sleep(500);
             Network.Send(new MessageShot() { point = sender.Position } as BaseMessage);
+
         }
 
 
@@ -78,7 +80,6 @@ namespace Battleship
                 MessageResultShot answer = new MessageResultShot()
                 { point = shot.point, pairPointShip = pairResult};
                 Network.Send(answer as BaseMessage);
-
                     Application.Current.Dispatcher.BeginInvoke
                                             (new ThreadStart(() => changeStep(!checkAble(pairResult.Key))));
             }
