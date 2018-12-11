@@ -66,5 +66,10 @@ namespace Battleship
         {
           return  network is Server;
         }
+
+        static public void Ready()
+        {
+            network.Send(new MessageGameStatus() { Status = GameStatus.Ready } as BaseMessage);
+        }
     }
 }

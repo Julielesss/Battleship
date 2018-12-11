@@ -24,9 +24,11 @@ namespace Battleship
         List<ShipPlacementInfo> ships;
         Field myField;
         Grid grdButtonsPlacement;
+        public bool opponentReady { get; set; } = false;
+        public bool imReady { get; set; } = false;
         
 
-        public event Action EndPlacementEvent;
+        public event Action ImReadyEvent;
 
         public ShipPlacement(Field field)
         {
@@ -145,8 +147,14 @@ namespace Battleship
 
             if (ships.Count() == 0)
             {
-                if (EndPlacementEvent != null)
-                    EndPlacementEvent.Invoke();
+                foreach (var btn in grdButtonsPlacement.Children.OfType<Button>())
+                { 
+
+                    if (btn.Tag.ToString() == "Ready")
+                        btn.Visibility = Visibility.Visible;
+                    else
+                        btn.Visibility = Visibility.Hidden;
+                }
             }
         }
 
@@ -175,7 +183,12 @@ namespace Battleship
 
         public void clickButton(Button sender, RoutedEventArgs e)
         {
-            if (sender.Tag.ToString() == "Turn")
+            if (sender.Tag.ToString() == "Ready")
+            {
+                ImReadyEvent?.Invoke();
+                sender.Visibility = Visibility.Hidden;
+            }
+            else if (sender.Tag.ToString() == "Turn")
                 btnTurn_Click();
             else
                 clickSelectShip(sender);

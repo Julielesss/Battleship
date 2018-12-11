@@ -36,9 +36,8 @@ namespace Battleship
         {
             grdMy.IsEnabled = false;
             grdMy.Visibility = grdEnemy.Visibility = Visibility.Visible;
-            if (!Network.isServer())
                 Application.Current.Dispatcher.BeginInvoke
-                                     (new ThreadStart(() => changeStep(false)));
+                                     (new ThreadStart(() => changeStep(Network.isServer())));
 
         }
 

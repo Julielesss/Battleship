@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,6 +25,7 @@ namespace Battleship
         string tbText = "Введите свое имя:";
         public string userName { get; private set; }
         public bool isConnected { get; set; } = false;
+        public bool TryConnect = false;
 
         public HelloWnd()
         {
@@ -52,8 +54,9 @@ namespace Battleship
         private void Network_ConnectedEvent()
         {
             Dispatcher.BeginInvoke(new ThreadStart(() => lblState.Content = "Connected"));
+            TryConnect = false;
             isConnected = true;
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
 
             Dispatcher.BeginInvoke(new ThreadStart(() => this.Close()));
         }
@@ -65,17 +68,17 @@ namespace Battleship
             if (btn.Tag.ToString() == "Start")
             {
                 Network.CreateServer();
+                ConnectBtn.IsEnabled = false;
                 connect(btn);
             }
             else if (btn.Tag.ToString() == "Cancel")
             {
-                Network.Close();
+                TryConnect = false;
                 btn.Tag = "Start";
                 btn.Content = "Создать игру";
+                ConnectBtn.IsEnabled = true;
                 lblState.Content = "";
             }
-                   
-            //this.Close // надо закомментить строчки выше и раскомментить эту
         }
 
         private void ConnectBTN_Click(object sender, RoutedEventArgs e)
@@ -86,23 +89,24 @@ namespace Battleship
             if (btn.Tag.ToString() == "Start")
             {
                 Network.CreateClient();
+                CreateBtn.IsEnabled = false;
                 connect(btn);
             }
             else if (btn.Tag.ToString() == "Cancel")
             {
                 Network.Close();
+                TryConnect = false;
+                CreateBtn.IsEnabled = true;
                 btn.Tag = "Start";
                 btn.Content = "Присоединиться к игре";
                 lblState.Content = "";
             }
-
-            //this.Close // надо закомментить две строчки выше и раскомментить эту
-
         }
 
         private void connect(Button btn)
         {
             Network.ConnectedEvent += Network_ConnectedEvent;
+            TryConnect = true;
             btn.Tag = "Cancel";
             btn.Content = "Отменить подключение";
 

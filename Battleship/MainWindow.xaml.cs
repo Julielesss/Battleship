@@ -66,19 +66,27 @@ namespace Battleship
         {
             this.IsEnabled = false;
             HelloWnd helloWnd = new HelloWnd();
-            helloWnd.Closing += HelloWnd_Closed;
+            helloWnd.Closing += HelloWnd_Closing;
+
             helloWnd.Show();
 
         }
 
-        private void HelloWnd_Closed(object sender, EventArgs e)
+        private void HelloWnd_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if ((sender as HelloWnd).isConnected == false)
+            HelloWnd window = sender as HelloWnd;
+
+            if (window.TryConnect)
+            {
+                e.Cancel = true;
+                return;
+            }
+            if (window.isConnected == false)
             {
                 Application.Current.Shutdown();
                 return;
             }
-            game.SetMyName((sender as HelloWnd).userName);
+            game.SetMyName(window.userName);
             this.IsEnabled = true;
         }
 

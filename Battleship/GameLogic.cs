@@ -35,7 +35,7 @@ namespace Battleship
             grdPlacement = grdPl;
             txblInfo = tblInfo;
             placement = new ShipPlacement(myField);
-            placement.EndPlacementEvent += endPlacement;
+            placement.ImReadyEvent += Ready;
             Network.ReceiveStatusEvent += ReceiveStatusHandler;
         }
 
@@ -72,7 +72,7 @@ namespace Battleship
         {
             placement.clickButton(sender, e);
         }
-        
+
         public void clickItemPlacement(Item sender, RoutedEventArgs e)
         {
             sender.Focusable = false;
@@ -81,7 +81,7 @@ namespace Battleship
 
         public void InitBattle()
         {
-            battle = new Battle(myField, enemyField, grdMy, grdEnemy, txblInfo); // возможно сделать по-другому
+            battle = new Battle(myField, enemyField, grdMy, grdEnemy, txblInfo);
         }
 
         public void ShowBattle()
@@ -118,13 +118,6 @@ namespace Battleship
         {
             state.clickItemHandler(sender, e);
         }
-        public void endPlacement() // возможно общий обработчик для всех состояний
-        {
-            grdPlacement.Visibility = Visibility.Hidden; // мб это отдельный метод окончания состояния
-
-            changeState(new StateBattle(this));
-            Start();
-        }
         public void Start()
         {
             state.Start();
@@ -139,15 +132,14 @@ namespace Battleship
                 MessageBox.Show("Ваш оппонент вышел из игры", "Сорямба", MessageBoxButton.OK);
                 Application.Current.Dispatcher.BeginInvoke
                      (new ThreadStart(() => Application.Current.Shutdown()));
-                //Application.Current.Shutdown();
-                //Application.Current.Dispatcher.BeginInvoke
-                //     (new ThreadStart(() => txblInfo.Text = "Ваш оппонент вышел из игры"));
-
             }
             else if (status.Status == GameStatus.Ready)
             {
+                placement.opponentReady = true;
                 Application.Current.Dispatcher.BeginInvoke
                       (new ThreadStart(() => txblInfo.Text = "Ваш оппонент готов к игре!"));
+                if (placement.imReady)
+                    endPlacement();
 
             }
             else if (status.Status == GameStatus.Win)
@@ -155,6 +147,26 @@ namespace Battleship
 
             }
         }
+
+        public void Ready()
+        {
+            Network.Ready();
+            if (placement.opponentReady)
+                endPlacement();
+            else
+                Application.Current.Dispatcher.BeginInvoke
+                        (new ThreadStart(() => txblInfo.Text = "Ждем, пока оппонент будет готов"));
+        }
+
+        private void endPlacement()
+        {
+            grdPlacement.Visibility = Visibility.Hidden; // мб это отдельный метод окончания состояния
+
+            changeState(new StateBattle(this));
+            Start();
+        }
+
     }
+
 }
 

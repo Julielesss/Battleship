@@ -80,9 +80,6 @@ namespace Battleship
             ConnectedEvent?.Invoke();
             Task taskReceive = new Task(() => Receive(), token);
             taskReceive.Start();
-                
-            //Thread thread = new Thread(new ThreadStart(Receive));
-            //thread.Start();
         }
     }
 }

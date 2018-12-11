@@ -54,7 +54,7 @@ namespace Battleship
                     Thread.Sleep(5000);
                 }
             }
-            catch(Exception e)
+            catch(ObjectDisposedException e)
             {
                 MessageBox.Show(e.ToString());
             }

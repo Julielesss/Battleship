@@ -56,6 +56,7 @@
             <Button x:Name="btnThree" Grid.Row="2" Content="Three" Style="{ StaticResource ButtonsPlacement}" ></Button>
             <Button x:Name="btnFour" Grid.Row="3" Content="Four" Style="{ StaticResource ButtonsPlacement}" ></Button>
             <Button x:Name="btnTurn" Grid.Column="1" Grid.Row= "0" Content="Turn" Style="{StaticResource ButtonsPlacement}" Tag="Turn"></Button>
+            <Button x:Name="btnReady"  Grid.Column="1" Grid.Row= "1" Content="Я готов!" Tag="Ready" Visibility="Hidden" Click="clickButton"></Button>
             <Image x:Name="imagePlacement" Height="200" Width="170" Stretch="None" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Image>
         </Grid>
     </Grid>
