@@ -71,5 +71,10 @@ namespace Battleship
         {
             network.Send(new MessageGameStatus() { Status = GameStatus.Ready } as BaseMessage);
         }
+
+        static public void Win()
+        {
+            network.Send(new MessageGameStatus() { Status = GameStatus.Win } as BaseMessage);
+        }
     }
 }

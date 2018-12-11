@@ -144,7 +144,9 @@ namespace Battleship
             }
             else if (status.Status == GameStatus.Win)
             {
-
+                MessageBox.Show("Вы проиграли", "Сорямба", MessageBoxButton.OK);
+                Application.Current.Dispatcher.BeginInvoke
+                     (new ThreadStart(() => Application.Current.Shutdown()));
             }
         }
 

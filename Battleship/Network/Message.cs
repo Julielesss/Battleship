@@ -49,4 +49,5 @@ namespace Battleship
         //public PointStatus pointStatus { get; set; }
         //public Ship ship { get; set; }
     }
+
 }

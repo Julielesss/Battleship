@@ -66,8 +66,8 @@ namespace Battleship
 
         public void win()
         {
-            //отправка сообщения о победе
-            //показ победного сообщения пользователю
+            MessageBox.Show("Вы выиграли", "Поздравлямба", MessageBoxButton.OK);
+            Network.Win();
         }
 
         public void ReceiveEventHandler(BaseMessage message)
