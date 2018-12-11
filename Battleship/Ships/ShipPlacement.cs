@@ -186,6 +186,7 @@ namespace Battleship
             if (sender.Tag.ToString() == "Ready")
             {
                 ImReadyEvent?.Invoke();
+                imReady = true;
                 sender.Visibility = Visibility.Hidden;
             }
             else if (sender.Tag.ToString() == "Turn")
