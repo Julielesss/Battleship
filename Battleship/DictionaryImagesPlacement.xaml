@@ -29,6 +29,7 @@
     <BitmapImage x:Key="CancelButton" UriSource="Images\ButtonCancel.png"></BitmapImage>
 
     <BitmapImage x:Key="deck1" UriSource="Images\1Deck\1DeckBTN.png"></BitmapImage>
+    <BitmapImage x:Key="deck2" UriSource="Images\2Deck\2DeckBTN.png"></BitmapImage>
     <BitmapImage x:Key="deck3" UriSource="Images\3Deck\3DeckBTN.png"></BitmapImage>
     <BitmapImage x:Key="deck4" UriSource="Images\4Deck\4DeckBTN.jpg"></BitmapImage>
 
