@@ -61,7 +61,9 @@
             <Button x:Name="btnOne" Grid.Row="0"  Style="{ StaticResource ButtonsPlacement}" Background="Transparent">
                 <Image  Source="{StaticResource deck1}" Width="120" Height="65"/>
             </Button>
-            <Button x:Name="btnTwo" Grid.Row="1" Content="Two" Style="{ StaticResource ButtonsPlacement}" ></Button>
+            <Button x:Name="btnTwo" Grid.Row="1" Style="{ StaticResource ButtonsPlacement}" >
+                <Image  Source="{StaticResource deck2}" Width="120" Height="65"/>
+            </Button>
             <Button x:Name="btnThree" Grid.Row="2" Style="{ StaticResource ButtonsPlacement}" >
                 <Image  Source="{StaticResource deck3}" Width="120" Height="65"/>
             </Button>
