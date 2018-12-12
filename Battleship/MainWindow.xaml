@@ -22,6 +22,7 @@
         <Style x:Key="ItemStyle">
             <Setter Property="local:Item.Height" Value="30"></Setter>
             <Setter Property="local:Item.Width" Value="30"></Setter>
+            <Setter Property="local:Item.BorderBrush" Value="White"/>
             <EventSetter Event="local:Item.Click" Handler="clickItem"></EventSetter>
         </Style>
 

@@ -34,7 +34,7 @@ namespace Battleship
         {
             if (typeShip.QuantityShip == 0)
             {
-                btnChoiceShip.IsEnabled = false;
+                btnChoiceShip.Visibility = Visibility.Collapsed;
                 return true;
             }
             return false;
