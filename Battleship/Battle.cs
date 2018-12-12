@@ -65,9 +65,8 @@ namespace Battleship
         private void win()
         {
             Network.Win();
-            MessageBox.Show("Вы выиграли", "Поздравлямба", MessageBoxButton.OK);
-            Application.Current.Dispatcher.BeginInvoke
-                (new ThreadStart(() => Application.Current.Shutdown()));
+            Win winWindow = new Win();
+            winWindow.Show();
         }
 
         public void ReceiveEventHandler(BaseMessage message)
