@@ -72,7 +72,7 @@
             <Button x:Name="btnTurn" Grid.Column="1" Grid.Row= "0" Style="{StaticResource ButtonsPlacement}" Tag="Turn" Click="BtnTurn_Click">
                 <Image  Source="{StaticResource turn}" Width="120" Height="65"/>
             </Button>
-            <Button x:Name="btnReady"  Grid.Column="1" Grid.Row= "1" Width="150" Height="80" Style="{StaticResource ButtonsPlacement}" Tag="Ready" Visibility="Visible" Click="clickButton">
+            <Button x:Name="btnReady"  Grid.Column="1" Grid.Row= "1" Width="150" Height="80" Style="{StaticResource ButtonsPlacement}" Tag="Ready" Visibility="Hidden" Click="clickButton">
                 <Image  Source="{StaticResource ready}" Width="150" Height="80"/>
             </Button>
             <Image x:Name="imagePlacement" Height="200" Stretch="None" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="3,13,0,12"/>
