@@ -65,7 +65,7 @@ namespace Battleship
                 if (tcpServer.Pending())
                 {
                     tcpClient = tcpServer.AcceptTcpClient();
-
+                    stream = tcpClient.GetStream();
                     ConnectedEvent?.Invoke();
                     Receive(); // посмотреть, в каком потоке вызывается
                     break;

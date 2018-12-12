@@ -66,6 +66,7 @@ namespace Battleship
             try
             {
                 tcpClient.Connect(address, portTcp);
+                stream = tcpClient.GetStream();
                 
             }
             catch (Exception e)
