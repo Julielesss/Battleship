@@ -47,7 +47,7 @@ namespace Battleship
             }
             catch (InvalidOperationException e)
             {
-                MessageBox.Show(e.ToString());
+ //               MessageBox.Show(e.ToString());
             }
             finally
             {
@@ -93,7 +93,7 @@ namespace Battleship
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.ToString());
+//MessageBox.Show(e.ToString());
             }
             finally
             {

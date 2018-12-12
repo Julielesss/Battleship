@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Battleship">
+    
     <BitmapImage x:Key="1Deck" UriSource="Images\1Deck.jpg"></BitmapImage>
     <BitmapImage x:Key="1DeckV" UriSource="Images\1DeckV.jpg"></BitmapImage>
    
@@ -25,5 +26,8 @@
     <BitmapImage x:Key="fon" UriSource="Images\Fon.jpg"></BitmapImage>
     <BitmapImage x:Key="fon2" UriSource="Images\Fon2.png"></BitmapImage>
     <BitmapImage x:Key="fon3" UriSource="Images\Fon3.png"></BitmapImage>
+
+    <BitmapImage x:Key="deck1" UriSource="Images\1DeckBTN.png"></BitmapImage>
+    <BitmapImage x:Key="deck3" UriSource="Images\3DeckBTN.png"></BitmapImage>
 
 </ResourceDictionary>

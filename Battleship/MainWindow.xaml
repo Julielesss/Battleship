@@ -10,9 +10,13 @@
     <Window.Resources>
         <Style x:Key="ButtonsPlacement">
             <Setter Property="Grid.Column" Value="0"></Setter>
-            <Setter Property="Button.Width"  Value="100"></Setter>
-            <Setter Property="Button.Height" Value="30"></Setter>
+            <Setter Property="Control.BorderBrush" Value="White"/>
+            <Setter Property="Button.Width"  Value="120"></Setter>
+            <Setter Property="Button.Height" Value="65"></Setter>
             <Setter Property="Button.Tag" Value="Placement"></Setter>
+            <Setter Property="Button.BorderBrush" Value="White"/>
+            <Setter Property="Button.BorderThickness" Value="0"/>
+            <Setter Property="Button.Background" Value="Transparent"/>
             <EventSetter Event="Button.Click" Handler="clickButton"></EventSetter>
         </Style>
         <Style x:Key="ItemStyle">
@@ -42,7 +46,7 @@
         <Grid Grid.Row="0">
         </Grid>
         <TextBlock VerticalAlignment="Bottom" FontFamily="Segoe Script" Foreground="Red" Name="GeneralTB" Grid.Row="0" FontSize="44" FontWeight="Bold"  HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="162,28,145,28" Width="700"></TextBlock>
-        <Grid Name="grdShipState" Grid.Row="1" Grid.Column="1" Height="300" Width="300">
+        <Grid Name="grdShipState" Grid.Row="1" Grid.Column="1" Height="300" Width="300" HorizontalAlignment="Left">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -53,9 +57,13 @@
                 <ColumnDefinition Width="0.7*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnOne" Grid.Row="0" Content="One" Style="{ StaticResource ButtonsPlacement}"></Button>
+            <Button x:Name="btnOne" Grid.Row="0"  Style="{ StaticResource ButtonsPlacement}" Background="Transparent">
+                <Image  Source="{StaticResource deck1}" Width="120" Height="65"/>
+            </Button>
             <Button x:Name="btnTwo" Grid.Row="1" Content="Two" Style="{ StaticResource ButtonsPlacement}" ></Button>
-            <Button x:Name="btnThree" Grid.Row="2" Content="Three" Style="{ StaticResource ButtonsPlacement}" ></Button>
+            <Button x:Name="btnThree" Grid.Row="2" Style="{ StaticResource ButtonsPlacement}" >
+                <Image  Source="{StaticResource deck3}" Width="120" Height="65"/>
+            </Button>
             <Button x:Name="btnFour" Grid.Row="3" Content="Four" Style="{ StaticResource ButtonsPlacement}" ></Button>
             <Button x:Name="btnTurn" Grid.Column="1" Grid.Row= "0" Content="Turn" Style="{StaticResource ButtonsPlacement}" Tag="Turn"></Button>
             <Button x:Name="btnReady"  Grid.Column="1" Grid.Row= "1" Content="Я готов!" Tag="Ready" Visibility="Hidden" Click="clickButton"></Button>
