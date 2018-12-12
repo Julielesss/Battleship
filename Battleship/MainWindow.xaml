@@ -40,13 +40,12 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" Source="{StaticResource fon2}" HorizontalAlignment="Center"  VerticalAlignment="Stretch" Stretch="Fill"/>
-
         <UniformGrid Name="grdMyField" Grid.Row="1" Grid.Column="0" Height="300" Width="300" Rows="10" Columns="10">
         </UniformGrid>
         <UniformGrid Name="grdEnemyField" Grid.Row="1" Grid.Column="1" Height="300" Width="300" Rows="10" Columns="10"></UniformGrid>
         <Grid Grid.Row="0">
         </Grid>
-        <TextBlock VerticalAlignment="Bottom" FontFamily="Segoe Script" Foreground="Red" Name="GeneralTB" Grid.Row="0" FontSize="44" FontWeight="Bold"  HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="162,28,145,28" Width="700"></TextBlock>
+        <TextBlock VerticalAlignment="Bottom" FontFamily="Segoe Script" Foreground="Red" Name="GeneralTB" Grid.Row="0" FontSize="40" FontWeight="Bold"  HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="162,28,145,28" Width="700"></TextBlock>
         <Grid Name="grdShipState" Grid.Row="1" Grid.Column="1" Height="300" Width="320" HorizontalAlignment="Left">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -70,8 +69,12 @@
             <Button x:Name="btnFour" Grid.Row="3" Style="{ StaticResource ButtonsPlacement}">
                 <Image  Source="{StaticResource deck4}" Width="120" Height="65"/>
             </Button>
-            <Button x:Name="btnTurn" Grid.Column="1" Grid.Row= "0" Content="Turn" Style="{StaticResource ButtonsPlacement}" Tag="Turn"></Button>
-            <Button x:Name="btnReady"  Grid.Column="1" Grid.Row= "1" Content="Я готов!" Tag="Ready" Visibility="Hidden" Click="clickButton"></Button>
+            <Button x:Name="btnTurn" Grid.Column="1" Grid.Row= "0" Style="{StaticResource ButtonsPlacement}" Tag="Turn" Click="BtnTurn_Click">
+                <Image  Source="{StaticResource turn}" Width="120" Height="65"/>
+            </Button>
+            <Button x:Name="btnReady"  Grid.Column="1" Grid.Row= "1" Tag="ready" Visibility="Hidden" Click="clickButton">
+                <Image  Source="{StaticResource ready}" Width="120" Height="65"/>
+            </Button>
             <Image x:Name="imagePlacement" Height="200" Stretch="None" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="3,13,0,12"/>
         </Grid>
     </Grid>
