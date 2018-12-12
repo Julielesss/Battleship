@@ -43,7 +43,7 @@ namespace Battleship
                 //stream = tcpClient.GetStream();
                 formatter.Serialize(ms, message);
                 byte[] bytes = ms.ToArray();
-                stream.Write(bytes, 0, bytes.Length);
+                stream?.Write(bytes, 0, bytes.Length);
             }
             catch (InvalidOperationException e)
             {
@@ -106,6 +106,7 @@ namespace Battleship
         public virtual void Close()
         {
             cancelTokenSource.Cancel();
+            udp?.Close();
             Send(new MessageGameStatus() { Status = GameStatus.Disconnect } as BaseMessage);
             stream?.Close();
             isStarted = false;
