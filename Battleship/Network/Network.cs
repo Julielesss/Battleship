@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Battleship
 {
@@ -58,7 +59,6 @@ namespace Battleship
         }
         static public void Close()
         {
-           // network?.Send(new )
             network?.Close();
             network = null;
         }
