@@ -114,7 +114,8 @@ namespace Battleship
             for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
             {
                 Image img = new Image();
-                img.Source = (ImageSource)Application.Current.Resources["greenSquare"]; // картинка, временное дебильное решение
+                img.Source = (ImageSource)Application.Current.Resources["3DeckF"];
+                //img.Source = (ImageSource)Application.Current.Resources["greenSquare"]; // картинка, временное дебильное решение
                 Item temp;
 
                 if (selectedPosition == Position.Horizontal)

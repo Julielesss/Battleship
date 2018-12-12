@@ -2,16 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Battleship">
     
-    <BitmapImage x:Key="1Deck" UriSource="Images\1Deck.jpg"></BitmapImage>
-    <BitmapImage x:Key="1DeckV" UriSource="Images\1DeckV.jpg"></BitmapImage>
-   
-    <BitmapImage x:Key="2Deck" UriSource="Images\2Deck.jpg"></BitmapImage>
-    <BitmapImage x:Key="2DeckV" UriSource="Images\2DeckV.jpg"></BitmapImage>
-    
-    <BitmapImage x:Key="3Deck" UriSource="Images\3Deck.jpg"></BitmapImage>
-    <BitmapImage x:Key="3DeckV" UriSource="Images\3DeckV.jpg"></BitmapImage>
-    <BitmapImage x:Key="4Deck" UriSource="Images\4Deck.jpg"></BitmapImage>
-    <BitmapImage x:Key="4DeckV" UriSource="Images\4DeckV.jpg"></BitmapImage>
+    <BitmapImage x:Key="1Deck" UriSource="Images\1Deck\1Deck.jpg"></BitmapImage>
+    <BitmapImage x:Key="1DeckV" UriSource="Images\1Deck\1DeckV.jpg"></BitmapImage>
+
+    <BitmapImage x:Key="2Deck" UriSource="Images\2Deck\2Deck.jpg"></BitmapImage>
+    <BitmapImage x:Key="2DeckV" UriSource="Images\2Deck\2DeckV.jpg"></BitmapImage>
+
+    <BitmapImage x:Key="3Deck" UriSource="Images\3Deck\3Deck.jpg"></BitmapImage>
+    <BitmapImage x:Key="3DeckV" UriSource="Images\3Deck\3DeckV.jpg"></BitmapImage>
+    <BitmapImage x:Key="4Deck" UriSource="Images\4Deck\4Deck.jpg"></BitmapImage>
+    <BitmapImage x:Key="4DeckV" UriSource="Images\4Deck\4DeckV.jpg"></BitmapImage>
 
     <BitmapImage x:Key="greenSquare" UriSource="Images\green.jpg"></BitmapImage>
     <BitmapImage x:Key="yellowSquare" UriSource="Images\yellow.jpg"></BitmapImage>
@@ -28,8 +28,23 @@
     <BitmapImage x:Key="fon3" UriSource="Images\Fon3.png"></BitmapImage>
     <BitmapImage x:Key="CancelButton" UriSource="Images\ButtonCancel.png"></BitmapImage>
 
-    <BitmapImage x:Key="deck1" UriSource="Images\1DeckBTN.png"></BitmapImage>
-    <BitmapImage x:Key="deck3" UriSource="Images\3DeckBTN.png"></BitmapImage>
-    <BitmapImage x:Key="deck4" UriSource="Images\4DeckBTN.jpg"></BitmapImage>
+    <BitmapImage x:Key="deck1" UriSource="Images\1Deck\1DeckBTN.png"></BitmapImage>
+    <BitmapImage x:Key="deck3" UriSource="Images\3Deck\3DeckBTN.png"></BitmapImage>
+    <BitmapImage x:Key="deck4" UriSource="Images\4Deck\4DeckBTN.jpg"></BitmapImage>
+
+    <BitmapImage x:Key="4DeckF" UriSource="Images\4Deck\4DeckF.png"></BitmapImage>
+    <BitmapImage x:Key="4DeckFV" UriSource="Images\4Deck\4DeckFV.png"></BitmapImage>
+    <BitmapImage x:Key="4DeckE" UriSource="Images\4Deck\4DeckE.png"></BitmapImage>
+    <BitmapImage x:Key="4DeckEV" UriSource="Images\4Deck\4DeckEV.png"></BitmapImage>
+
+    <BitmapImage x:Key="3DeckF" UriSource="Images\3Deck\3DeckF.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckS" UriSource="Images\3Deck\3DeckS.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckE" UriSource="Images\3Deck\3DeckE.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckFV" UriSource="Images\3Deck\3DeckFV.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckSV" UriSource="Images\3Deck\3DeckSV.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckEV" UriSource="Images\3Deck\3DeckEV.png"></BitmapImage>
+
+
+
 
 </ResourceDictionary>

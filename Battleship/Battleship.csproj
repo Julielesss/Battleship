@@ -124,10 +124,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\2DeckV.jpg" />
+    <Resource Include="Images\2Deck\2DeckV.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\2Deck.jpg" />
+    <Resource Include="Images\2Deck\2Deck.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\green.jpg" />
@@ -174,30 +174,48 @@
     <Resource Include="1DeckBTN.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\1DeckV.jpg" />
+    <Resource Include="Images\1Deck\1DeckV.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\1Deck.jpg" />
+    <Resource Include="Images\1Deck\1Deck.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\1DeckBTN.png" />
+    <Resource Include="Images\1Deck\1DeckBTN.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\3DeckBTN.png" />
+    <Resource Include="Images\3Deck\3DeckBTN.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\3Deck.jpg" />
+    <Resource Include="Images\3Deck\3Deck.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\3DeckV.jpg" />
+    <Resource Include="Images\3Deck\3DeckV.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ButtonCancel.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\4Deck.jpg" />
-    <Resource Include="Images\4DeckBTN.jpg" />
-    <Resource Include="Images\4DeckV.jpg" />
+    <Resource Include="Images\4Deck\4Deck.jpg" />
+    <Resource Include="Images\4Deck\4DeckBTN.jpg" />
+    <Resource Include="Images\4Deck\4DeckV.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\4Deck\4DeckE.png" />
+    <Resource Include="Images\4Deck\4DeckEV.png" />
+    <Resource Include="Images\4Deck\4DeckF.png" />
+    <Resource Include="Images\4Deck\4DeckFV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\3Deck\3DeckF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\3Deck\3DeckE.png" />
+    <Resource Include="Images\3Deck\3DeckS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\3Deck\3DeckEV.png" />
+    <Resource Include="Images\3Deck\3DeckFV.png" />
+    <Resource Include="Images\3Deck\3DeckSV.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
