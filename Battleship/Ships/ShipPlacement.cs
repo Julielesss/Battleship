@@ -110,19 +110,46 @@ namespace Battleship
         private void SetShip(Item sender)
         {
             Ship currentShip = new Ship();
+            int shipSize = selectedShip.typeShip.QuantityDeck;
 
-            for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
+            for (int i = 0; i < shipSize; i++)
             {
-                Image img = new Image();
-                img.Source = (ImageSource)Application.Current.Resources["3DeckF"];
-                //img.Source = (ImageSource)Application.Current.Resources["greenSquare"]; // картинка, временное дебильное решение
                 Item temp;
+                Image img = new Image();
+                string name;
+                if (shipSize == 1)
+                    name = "1Deck";
+                else if (shipSize == 2 || shipSize == 4)
+                {
+                    name = shipSize.ToString() + "Deck";
+                    if (i < shipSize - 1)
+                        name += "F";
+                    else
+                        name += "E";
+                }
+                else
+                {
+                    if (i == 0)
+                        name = "3DeckF";
+                    else if (i == 1)
+                        name = "3DeckS";
+                    else
+                        name = "3DeckE";
+                }
+               
 
                 if (selectedPosition == Position.Horizontal)
-                    temp = myField.Items[(int)sender.Position.X+i , (int)sender.Position.Y ];
+                    temp = myField.Items[(int)sender.Position.X + i, (int)sender.Position.Y];
+                
                 else
-                    temp = myField.Items[(int)sender.Position.X, (int)sender.Position.Y +i];
+                {
+                    temp = myField.Items[(int)sender.Position.X, (int)sender.Position.Y + i];
+                    name += "V";
+                }
 
+               
+                img.Source = (ImageSource)Application.Current.Resources[name];
+                
                 temp.Content = img;
                 temp.IsEnabled = false;
                 temp.ship = currentShip;
