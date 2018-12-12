@@ -47,7 +47,7 @@ namespace Battleship
             }
             catch (InvalidOperationException e)
             {
- //               MessageBox.Show(e.ToString());
+                MessageBox.Show(e.ToString());
             }
             finally
             {
@@ -57,7 +57,6 @@ namespace Battleship
 
         public void Receive()
         {
-
             try
             {
                 int count;
@@ -76,24 +75,12 @@ namespace Battleship
                         ReceivedEvent?.Invoke(received);
 
                     }
-                    //if (stream.DataAvailable) // был stream.CanRead
-                    //{
-
-                    //    byte[] bytes = new byte[2048];
-                    //    int count = stream.Read(bytes, 0, bytes.Length);
-
-                    //    MemoryStream ms = new MemoryStream(bytes, 0, count);
-
-                    //    BinaryFormatter formatter = new BinaryFormatter();
-                    //    BaseMessage received = (BaseMessage)formatter.Deserialize(ms);
-                    //    ReceivedEvent?.Invoke(received);
-                    //}
                     Thread.Sleep(500);
                 }
             }
             catch(Exception e)
             {
-//MessageBox.Show(e.ToString());
+                //MessageBox.Show(e.ToString());
             }
             finally
             {

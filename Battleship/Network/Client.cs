@@ -54,7 +54,7 @@ namespace Battleship
             }
             catch(Exception e)
             {
-               // MessageBox.Show(e.ToString());
+                MessageBox.Show(e.ToString());
             }
             finally
             {

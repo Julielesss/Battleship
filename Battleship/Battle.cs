@@ -65,8 +65,12 @@ namespace Battleship
         private void win()
         {
             Network.Win();
-            Win winWindow = new Win();
-            winWindow.Show();
+            Application.Current.Dispatcher.BeginInvoke
+                     (new ThreadStart(() => {
+                         Win winWindow = new Win();
+                         winWindow.Show();
+                     }));
+
         }
 
         public void ReceiveEventHandler(BaseMessage message)
