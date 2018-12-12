@@ -30,5 +30,6 @@
 
     <BitmapImage x:Key="deck1" UriSource="Images\1DeckBTN.png"></BitmapImage>
     <BitmapImage x:Key="deck3" UriSource="Images\3DeckBTN.png"></BitmapImage>
+    <BitmapImage x:Key="deck4" UriSource="Images\4DeckBTN.jpg"></BitmapImage>
 
 </ResourceDictionary>
