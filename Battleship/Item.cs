@@ -91,14 +91,14 @@ namespace Battleship
                 else
                     name += "E";
             }
-            else if(size==3)
+            else if(size == 3)
             {
                 if (count == 1)
-                    name = "3DeckF";
+                    name += "F";
                 else if (count == 2)
-                    name = "3DeckS";
+                    name += "S";
                 else
-                    name = "3DeckE";
+                    name += "E";
             }
 
             if (isVertical)

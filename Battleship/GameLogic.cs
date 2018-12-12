@@ -144,8 +144,12 @@ namespace Battleship
             }
             else if (status.Status == GameStatus.Win)
             {
-                Lose loseWindow = new Lose();
-                loseWindow.Show();
+                Application.Current.Dispatcher.BeginInvoke
+                      (new ThreadStart(() => {
+                          Lose loseWindow = new Lose();
+                          loseWindow.Show();
+                      } ));
+                
             }
         }
 
