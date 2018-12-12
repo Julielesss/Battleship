@@ -94,5 +94,10 @@ namespace Battleship
         {
             Network.Close();
         }
+
+        private void BtnTurn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

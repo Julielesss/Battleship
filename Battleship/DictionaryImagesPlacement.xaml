@@ -24,6 +24,8 @@
     <BitmapImage x:Key="shar" UriSource="Images\Shar.png"></BitmapImage>
 
     <BitmapImage x:Key="fon" UriSource="Images\Fon.jpg"></BitmapImage>
+    <BitmapImage x:Key="turn" UriSource="Images\Turn.jpg"></BitmapImage>
+    <BitmapImage x:Key="ready" UriSource="Images\Ready.png"></BitmapImage>
     <BitmapImage x:Key="fon2" UriSource="Images\Fon2.png"></BitmapImage>
     <BitmapImage x:Key="fon3" UriSource="Images\Fon3.png"></BitmapImage>
     <BitmapImage x:Key="CancelButton" UriSource="Images\ButtonCancel.png"></BitmapImage>
