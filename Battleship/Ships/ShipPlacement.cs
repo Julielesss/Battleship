@@ -35,7 +35,6 @@ namespace Battleship
             ships = new List<ShipPlacementInfo>();
             selectedPosition = Position.Horizontal;
             myField = field;
-            //Network.ReceiveMessageEvent += ReceiveEventHandler;
         }
 
         public void InitShips(Button one, Button two, Button three, Button four, Grid gr)
