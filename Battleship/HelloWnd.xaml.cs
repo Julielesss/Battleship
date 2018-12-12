@@ -77,7 +77,10 @@ namespace Battleship
             {
                 TryConnect = false;
                 btn.Tag = "Start";
-                btn.Content = "Создать игру";
+                Image img = new Image();
+                img.Source = (ImageSource)Application.Current.Resources["CreateGameBTN"];
+                btn.Content = img;
+                // btn.Content = "Создать игру";
                 ConnectBtn.IsEnabled = true;
                 lblState.Content = "";
             }
@@ -100,7 +103,10 @@ namespace Battleship
                 TryConnect = false;
                 CreateBtn.IsEnabled = true;
                 btn.Tag = "Start";
-                btn.Content = "Присоединиться к игре";
+                Image img = new Image();
+                img.Source = (ImageSource)Application.Current.Resources["ConnectBTN"];
+                btn.Content = img;
+                //btn.Content = "Присоединиться к игре";
                 lblState.Content = "";
             }
         }
@@ -110,7 +116,10 @@ namespace Battleship
             Network.ConnectedEvent += Network_ConnectedEvent;
             TryConnect = true;
             btn.Tag = "Cancel";
-            btn.Content = "Отменить подключение";
+            Image img = new Image();
+            img.Source = (ImageSource)Application.Current.Resources["CancelButton"];
+            btn.Content = img;
+            //btn.Content = "Отменить подключение";
 
             Dispatcher.BeginInvoke(new ThreadStart(() => lblState.Content = "Connecting"));
         }

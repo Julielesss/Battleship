@@ -52,7 +52,7 @@ namespace Battleship
                     }
                 }
             }
-            catch(InvalidOperationException e)
+            catch(Exception e)
             {
                // MessageBox.Show(e.ToString());
             }
