@@ -107,7 +107,7 @@ namespace Battleship
         {
             cancelTokenSource.Cancel();
             Send(new MessageGameStatus() { Status = GameStatus.Disconnect } as BaseMessage);
-            stream.Close();
+            stream?.Close();
             isStarted = false;
             tcpClient?.Close();
         }
