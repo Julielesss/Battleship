@@ -58,7 +58,7 @@ namespace Battleship
 
         private void checkWin()
         {
-            if (enemyField.checkShipsCount() == 10) 
+            if (enemyField.checkShipsCount() >= 10) 
                 win();
         }
 

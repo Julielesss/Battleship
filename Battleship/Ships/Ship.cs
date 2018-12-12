@@ -85,7 +85,7 @@ namespace Battleship
                         {
                             field.Items[X1, Y1].IsEnabled = false;
                             //field.Items[X1, Y1].Status = PointStatus.past;
-                            }));
+                         }));
                 }
             }
         }

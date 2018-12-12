@@ -91,7 +91,7 @@ namespace Battleship
                 else
                     name += "E";
             }
-            else
+            else if(size==3)
             {
                 if (count == 1)
                     name = "3DeckF";
@@ -103,7 +103,6 @@ namespace Battleship
 
             if (isVertical)
                 name += "V";
-            name += "B";
             img.Source = (ImageSource)Application.Current.Resources[name];
             this.Content = img;
         }
