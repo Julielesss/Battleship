@@ -60,24 +60,34 @@ namespace Battleship
 
             try
             {
+                int count;
+                byte[] bytes = new byte[2048];
                 while (true)
                 {
                     if (tcpClient.Connected == false || isStarted == false)
                         break;
-
-                    if (stream.DataAvailable) // был stream.CanRead
+                    
+                    while ((count=stream.Read(bytes, 0, bytes.Length))!=0)
                     {
-                        
-
-                        byte[] bytes = new byte[2048];
-                        int count = stream.Read(bytes, 0, bytes.Length);
-
                         MemoryStream ms = new MemoryStream(bytes, 0, count);
 
                         BinaryFormatter formatter = new BinaryFormatter();
                         BaseMessage received = (BaseMessage)formatter.Deserialize(ms);
                         ReceivedEvent?.Invoke(received);
+
                     }
+                    //if (stream.DataAvailable) // был stream.CanRead
+                    //{
+
+                    //    byte[] bytes = new byte[2048];
+                    //    int count = stream.Read(bytes, 0, bytes.Length);
+
+                    //    MemoryStream ms = new MemoryStream(bytes, 0, count);
+
+                    //    BinaryFormatter formatter = new BinaryFormatter();
+                    //    BaseMessage received = (BaseMessage)formatter.Deserialize(ms);
+                    //    ReceivedEvent?.Invoke(received);
+                    //}
                     Thread.Sleep(500);
                 }
             }
