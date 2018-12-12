@@ -235,6 +235,33 @@
   <ItemGroup>
     <Resource Include="Images\gift .png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\past.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\2Deck\2DeckEB.png" />
+    <Resource Include="Images\2Deck\2DeckEVB.png" />
+    <Resource Include="Images\2Deck\2DeckFB.png" />
+    <Resource Include="Images\2Deck\2DeckFVB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1Deck\1DeckB.jpg" />
+    <Resource Include="Images\1Deck\1DeckVB.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\3Deck\3DeckEB.png" />
+    <Resource Include="Images\3Deck\3DeckEVB.png" />
+    <Resource Include="Images\3Deck\3DeckFB.png" />
+    <Resource Include="Images\3Deck\3DeckFVB.png" />
+    <Resource Include="Images\3Deck\3DeckSB.png" />
+    <Resource Include="Images\3Deck\3DeckSVB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\4Deck\4DeckEB.png" />
+    <Resource Include="Images\4Deck\4DeckEVB.png" />
+    <Resource Include="Images\4Deck\4DeckFB.png" />
+    <Resource Include="Images\4Deck\4DeckFVB.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

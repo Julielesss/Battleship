@@ -43,7 +43,6 @@ namespace Battleship
                     Point pos = new Point(j, i);
                     myItems[j, i] = new Item(pos);
                     enemyItems[j, i] = new Item(pos);
-
                     myItems[j, i].Style = enemyItems[j, i].Style = (Style)TryFindResource("ItemStyle");                         
                     grdMyField.Children.Add(myItems[j, i]);
                     grdEnemyField.Children.Add(enemyItems[j, i]);
