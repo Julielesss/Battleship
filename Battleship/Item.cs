@@ -15,6 +15,7 @@ namespace Battleship
         public Point Position { get; set; }
         public Ship ship { get; set; } = null;
         public PointStatus Status { get; set; }
+        public string imgPath { get; set; }
 
         public Item(Point position)
         {
@@ -45,43 +46,50 @@ namespace Battleship
             return pairResult;
         }
 
-       public void SetImg()
+       public void SetImg(bool isMy = true)
         {
+            Image img = new Image();
             if (Status == PointStatus.past)
-            {
-                Image img = new Image();
                 img.Source = (ImageSource)Application.Current.Resources["pastSquare"];
-                this.Content = img;
-            }
+                
             else if (Status == PointStatus.wounded)
             {
-                Image img = new Image();
-                img.Source = (ImageSource)Application.Current.Resources["yellowSquare"];
-                this.Content = img;
+                if (isMy)
+                    img.Source = (ImageSource)Application.Current.Resources[imgPath + "B"];
+                else
+                    img.Source = (ImageSource)Application.Current.Resources["Gift"];
+
             }
             else if (Status == PointStatus.killed)
-            {
-                Image img = new Image();
-                img.Source = (ImageSource)Application.Current.Resources["redSquare"];
-                this.Content = img;
-            }
+                img.Source = (ImageSource)Application.Current.Resources[imgPath + "B"];
+
+            this.Content = img;
         }
 
-        public void ShotEnemy(KeyValuePair<PointStatus, Ship> pair) // это при работе с чужим кораблем
+
+        public void KillEnemyItem(int count, bool isVertical)
         {
-            this.Status = pair.Key;
-            if (pair.Value != null)
-            {
-                
-            }
+            Status = PointStatus.killed;
+            Dispatcher.BeginInvoke(new ThreadStart(() => SetImgEnemyKill(count, isVertical)));
         }
 
-        public void KillItem()
+
+        public void KillMyItem()
         {
             Status = PointStatus.killed;
             Dispatcher.BeginInvoke(new ThreadStart(() => SetImg()));
         }
 
+        public void SetImgEnemyKill(int count, bool isVertical)
+        {
+            Image img = new Image();
+            string path = count.ToString() + "Deck";
+            if (isVertical)
+                path += "V";
+            path += "B";
+            img.Source = (ImageSource)Application.Current.Resources[path];
+            this.Content = img;
+        }
 
     }
 }

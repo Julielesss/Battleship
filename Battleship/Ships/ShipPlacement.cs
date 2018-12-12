@@ -149,7 +149,7 @@ namespace Battleship
 
                
                 img.Source = (ImageSource)Application.Current.Resources[name];
-                
+                temp.imgPath = name;
                 temp.Content = img;
                 temp.IsEnabled = false;
                 temp.ship = currentShip;
@@ -217,7 +217,6 @@ namespace Battleship
                 sender.Visibility = Visibility.Hidden;
             }
             else if (sender.Tag.ToString() == "Turn")
-
                 btnTurn_Click();
             else
                 clickSelectShip(sender);
