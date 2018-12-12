@@ -48,7 +48,7 @@ namespace Battleship
         public void clickItem(Item sender, RoutedEventArgs e)
         {
             Application.Current.Dispatcher.BeginInvoke
-                (new ThreadStart(() => changeStep(false)));
+                (new ThreadStart(() => { changeStep(false); sender.Focusable = sender.IsEnabled = false; }));
 
            // Thread.Sleep(500);
             Network.Send(new MessageShot() { point = sender.Position } as BaseMessage);
@@ -75,7 +75,6 @@ namespace Battleship
         {
             if (message is MessageShot)//выстрел в нас
             {
-                MessageBox.Show("В нас выстрелили");
                 MessageShot shot = (MessageShot)message;
                 KeyValuePair<PointStatus, Ship> pairResult = myField.Items[(int)shot.point.X, (int)shot.point.Y].ShotMyItem(myField);
 
