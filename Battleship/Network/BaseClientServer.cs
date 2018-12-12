@@ -73,7 +73,6 @@ namespace Battleship
                         BinaryFormatter formatter = new BinaryFormatter();
                         BaseMessage received = (BaseMessage)formatter.Deserialize(ms);
                         ReceivedEvent?.Invoke(received);
-
                     }
                     Thread.Sleep(500);
                 }

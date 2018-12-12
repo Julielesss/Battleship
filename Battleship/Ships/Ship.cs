@@ -33,7 +33,8 @@ namespace Battleship
         /// <returns></returns>
         public bool Shot()
         {
-            if (++padded >= cells.Count) 
+            ++padded;
+            if (padded >= cells.Count) 
                 return true;
             return false;
         }
