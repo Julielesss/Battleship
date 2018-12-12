@@ -52,6 +52,9 @@
     <BitmapImage x:Key="2DeckFV" UriSource="Images\2Deck\2DeckFV.png"></BitmapImage>
     <BitmapImage x:Key="2DeckEV" UriSource="Images\2Deck\2DeckEV.png"></BitmapImage>
 
+    <BitmapImage x:Key="Gift" UriSource="Images\gift.png"></BitmapImage>
+
+
 
 
 

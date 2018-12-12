@@ -98,8 +98,8 @@ namespace Battleship
                 }
                 else
                 {
-                    resultShot.pairPointShip.Value.Killed(enemyField);
-                    resultShot.pairPointShip.Value.turnOffItem(enemyField);
+                    resultShot.pairPointShip.Value.Killed(enemyField, false);
+                    resultShot.pairPointShip.Value.turnOffItem(enemyField, false);
                     enemyField.AddShip(resultShot.pairPointShip.Value);
                     checkWin();
                 }
