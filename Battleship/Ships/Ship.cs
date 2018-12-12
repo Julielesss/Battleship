@@ -51,6 +51,7 @@ namespace Battleship
         public void Killed(Field field, bool my = true)
         {
             int count = 1;
+            int size = cells.Count;
             bool isVertical = false;
 
             if (!my && cells.Count>1 && cells[0].X == cells[1].X)
@@ -62,7 +63,7 @@ namespace Battleship
                 if (my)
                     field.Items[(int)point.X, (int)point.Y].KillMyItem();
                 else
-                    field.Items[(int)point.X, (int)point.Y].KillEnemyItem(count, isVertical);
+                    field.Items[(int)point.X, (int)point.Y].KillEnemyItem(count, size, isVertical);
 
                 ++count;
             }

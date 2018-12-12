@@ -67,10 +67,10 @@ namespace Battleship
         }
 
 
-        public void KillEnemyItem(int count, bool isVertical)
+        public void KillEnemyItem(int count, int size, bool isVertical)
         {
             Status = PointStatus.killed;
-            Dispatcher.BeginInvoke(new ThreadStart(() => SetImgEnemyKill(count, isVertical)));
+            Dispatcher.BeginInvoke(new ThreadStart(() => SetImgEnemyKill(count, size, isVertical)));
         }
 
 
@@ -80,14 +80,31 @@ namespace Battleship
             Dispatcher.BeginInvoke(new ThreadStart(() => SetImg()));
         }
 
-        public void SetImgEnemyKill(int count, bool isVertical)
+        public void SetImgEnemyKill(int count, int size, bool isVertical)
         {
             Image img = new Image();
-            string path = count.ToString() + "Deck";
+            string name = size.ToString() + "Deck";
+            if (size == 2 || size == 4)
+            {
+                if (count < size)
+                    name += "F";
+                else
+                    name += "E";
+            }
+            else
+            {
+                if (count == 1)
+                    name = "3DeckF";
+                else if (count == 2)
+                    name = "3DeckS";
+                else
+                    name = "3DeckE";
+            }
+
             if (isVertical)
-                path += "V";
-            path += "B";
-            img.Source = (ImageSource)Application.Current.Resources[path];
+                name += "V";
+            name += "B";
+            img.Source = (ImageSource)Application.Current.Resources[name];
             this.Content = img;
         }
 
