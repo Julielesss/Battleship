@@ -57,6 +57,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Battle.cs" />
+    <Compile Include="Lose.xaml.cs">
+      <DependentUpon>Lose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Win.xaml.cs">
+      <DependentUpon>Win.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Network\Client.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="GameLogic.cs" />
@@ -82,6 +88,14 @@
     <Page Include="DictionaryImagesPlacement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lose.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Win.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="HelloWnd.xaml">
       <SubType>Designer</SubType>
@@ -261,6 +275,9 @@
     <Resource Include="Images\4Deck\4DeckEVB.png" />
     <Resource Include="Images\4Deck\4DeckFB.png" />
     <Resource Include="Images\4Deck\4DeckFVB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ok.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
