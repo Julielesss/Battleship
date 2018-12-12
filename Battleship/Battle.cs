@@ -52,7 +52,7 @@ namespace Battleship
 
            // Thread.Sleep(500);
             Network.Send(new MessageShot() { point = sender.Position } as BaseMessage);
-            MessageBox.Show("send click");
+
         }
 
 
@@ -75,6 +75,7 @@ namespace Battleship
         {
             if (message is MessageShot)//выстрел в нас
             {
+                MessageBox.Show("В нас выстрелили");
                 MessageShot shot = (MessageShot)message;
                 KeyValuePair<PointStatus, Ship> pairResult = myField.Items[(int)shot.point.X, (int)shot.point.Y].ShotMyItem(myField);
 

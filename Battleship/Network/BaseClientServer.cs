@@ -17,7 +17,7 @@ namespace Battleship
         protected int portTcp = 13859;
         protected  UdpClient udp;
         protected TcpClient tcpClient;
-        NetworkStream stream;
+        protected NetworkStream stream;
         protected string connectMessage = "ThisIsConnectMessage";
         protected bool isStarted;
 
@@ -40,7 +40,7 @@ namespace Battleship
 
             try
             {
-                stream = tcpClient.GetStream();
+                //stream = tcpClient.GetStream();
                 formatter.Serialize(ms, message);
                 byte[] bytes = ms.ToArray();
                 stream.Write(bytes, 0, bytes.Length);
@@ -57,7 +57,7 @@ namespace Battleship
 
         public void Receive()
         {
-            NetworkStream stream = tcpClient.GetStream();
+
             try
             {
                 while (true)
@@ -67,6 +67,8 @@ namespace Battleship
 
                     if (stream.DataAvailable) // был stream.CanRead
                     {
+                        
+
                         byte[] bytes = new byte[2048];
                         int count = stream.Read(bytes, 0, bytes.Length);
 
