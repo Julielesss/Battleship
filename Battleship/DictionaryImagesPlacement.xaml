@@ -4,6 +4,8 @@
     
     <BitmapImage x:Key="1Deck" UriSource="Images\1Deck\1Deck.jpg"></BitmapImage>
     <BitmapImage x:Key="1DeckV" UriSource="Images\1Deck\1DeckV.jpg"></BitmapImage>
+    <BitmapImage x:Key="1DeckB" UriSource="Images\1Deck\1DeckB.jpg"></BitmapImage>
+    <BitmapImage x:Key="1DeckVB" UriSource="Images\1Deck\1DeckVB.jpg"></BitmapImage>
 
     <BitmapImage x:Key="2Deck" UriSource="Images\2Deck\2Deck.jpg"></BitmapImage>
     <BitmapImage x:Key="2DeckV" UriSource="Images\2Deck\2DeckV.jpg"></BitmapImage>
@@ -40,6 +42,18 @@
     <BitmapImage x:Key="4DeckE" UriSource="Images\4Deck\4DeckE.png"></BitmapImage>
     <BitmapImage x:Key="4DeckEV" UriSource="Images\4Deck\4DeckEV.png"></BitmapImage>
 
+    <BitmapImage x:Key="4DeckFB" UriSource="Images\4Deck\4DeckFB.png"></BitmapImage>
+    <BitmapImage x:Key="4DeckFVB" UriSource="Images\4Deck\4DeckFVB.png"></BitmapImage>
+    <BitmapImage x:Key="4DeckEB" UriSource="Images\4Deck\4DeckEB.png"></BitmapImage>
+    <BitmapImage x:Key="4DeckEVB" UriSource="Images\4Deck\4DeckEVB.png"></BitmapImage>
+
+    <BitmapImage x:Key="3DeckFB" UriSource="Images\3Deck\3DeckFB.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckSB" UriSource="Images\3Deck\3DeckSB.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckEB" UriSource="Images\3Deck\3DeckEB.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckFVB" UriSource="Images\3Deck\3DeckFVB.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckSVB" UriSource="Images\3Deck\3DeckSVB.png"></BitmapImage>
+    <BitmapImage x:Key="3DeckEVB" UriSource="Images\3Deck\3DeckEVB.png"></BitmapImage>
+
     <BitmapImage x:Key="3DeckF" UriSource="Images\3Deck\3DeckF.png"></BitmapImage>
     <BitmapImage x:Key="3DeckS" UriSource="Images\3Deck\3DeckS.png"></BitmapImage>
     <BitmapImage x:Key="3DeckE" UriSource="Images\3Deck\3DeckE.png"></BitmapImage>
@@ -52,10 +66,10 @@
     <BitmapImage x:Key="2DeckFV" UriSource="Images\2Deck\2DeckFV.png"></BitmapImage>
     <BitmapImage x:Key="2DeckEV" UriSource="Images\2Deck\2DeckEV.png"></BitmapImage>
 
+    <BitmapImage x:Key="2DeckFB" UriSource="Images\2Deck\2DeckFB.png"></BitmapImage>
+    <BitmapImage x:Key="2DeckEB" UriSource="Images\2Deck\2DeckEB.png"></BitmapImage>
+    <BitmapImage x:Key="2DeckFVB" UriSource="Images\2Deck\2DeckFVB.png"></BitmapImage>
+    <BitmapImage x:Key="2DeckEVB" UriSource="Images\2Deck\2DeckEVB.png"></BitmapImage>
+
     <BitmapImage x:Key="Gift" UriSource="Images\gift.png"></BitmapImage>
-
-
-
-
-
 </ResourceDictionary>

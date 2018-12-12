@@ -33,7 +33,7 @@ namespace Battleship
         /// <returns></returns>
         public bool Shot()
         {
-            if (++padded >= cells.Count) // >= временно, пока тестим и есть вероятность повторного выстрела в клетку
+            if (++padded == cells.Count) 
                 return true;
             return false;
         }
@@ -50,9 +50,10 @@ namespace Battleship
 
         public void Killed(Field field, bool my = true)
         {
-            int count = 0;
+            int count = 1;
             bool isVertical = false;
-            if (!my && cells[0].X == cells[1].X)
+
+            if (!my && cells.Count>1 && cells[0].X == cells[1].X)
                     isVertical = true;
             
 
@@ -82,7 +83,7 @@ namespace Battleship
                         Application.Current.Dispatcher.BeginInvoke(new ThreadStart(() =>
                         {
                             field.Items[X1, Y1].IsEnabled = false;
-                            field.Items[X1, Y1].Status = PointStatus.past;
+                            //field.Items[X1, Y1].Status = PointStatus.past;
                             }));
                 }
             }

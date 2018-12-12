@@ -147,7 +147,6 @@ namespace Battleship
                     name += "V";
                 }
 
-               
                 img.Source = (ImageSource)Application.Current.Resources[name];
                 temp.imgPath = name;
                 temp.Content = img;
@@ -176,7 +175,6 @@ namespace Battleship
             {
                 foreach (var btn in grdButtonsPlacement.Children.OfType<Button>())
                 { 
-
                     if (btn.Tag.ToString() == "Ready")
                         btn.Visibility = Visibility.Visible;
                     else

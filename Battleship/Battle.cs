@@ -90,11 +90,10 @@ namespace Battleship
                 enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y].Status = resultShot.pairPointShip.Key;
 
                 if (resultShot.pairPointShip.Key != PointStatus.killed)
-                {
-
+                { 
                     var Item = enemyField.Items[(int)resultShot.point.X, (int)resultShot.point.Y];
                     Application.Current.Dispatcher.BeginInvoke
-                         (new ThreadStart(() => Item.SetImg()));
+                         (new ThreadStart(() => Item.SetImg(false)));
                 }
                 else
                 {

@@ -233,7 +233,7 @@
     <Resource Include="Images\Ready.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\gift .png" />
+    <Resource Include="Images\gift.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\past.png" />
