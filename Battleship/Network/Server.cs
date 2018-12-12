@@ -36,11 +36,6 @@ namespace Battleship
 
             Task taskTcpAccept = new Task(() => StartTcpAccept(), token);
             taskTcpAccept.Start();
-
-            //Thread threadBroadcast = new Thread(new ThreadStart(StartBroadcast));
-            //Thread threadTcp = new Thread(new ThreadStart(StartTcpAccept));
-            //threadBroadcast.Start();
-           // threadTcp.Start();
         }
 
         private void StartBroadcast()
@@ -51,7 +46,7 @@ namespace Battleship
                 {
                     byte[] bytes = Encoding.ASCII.GetBytes(connectMessage);
                     udp.Send(bytes, bytes.Length, new IPEndPoint(IPAddress.Broadcast, portUdp));
-                    Thread.Sleep(5000);
+                    Thread.Sleep(1000);
                 }
             }
             catch(ObjectDisposedException e)
@@ -62,7 +57,6 @@ namespace Battleship
             {
                 udp.Close();
             }
-
         }
         private void StartTcpAccept()
         {
@@ -78,16 +72,6 @@ namespace Battleship
                 }
                 Thread.Sleep(1000);
             }
-            //try
-            //{
-            //        tcpClient = tcpServer.AcceptTcpClient();
-            //}
-            //catch (Exception e)
-            //{
-            //    MessageBox.Show("tcpAccept exception" + e.ToString());
-            //    return;
-            //}
-
         }
 
         public override void Close()

@@ -29,9 +29,6 @@ namespace Battleship
             Task taskSearchServer = new Task(() => SearchServer(token));
             taskSearchServer.Start();
             
-
-           // SearchServer();
-            
         }
 
         private void SearchServer(CancellationToken token)

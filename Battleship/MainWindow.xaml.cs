@@ -68,7 +68,7 @@ namespace Battleship
             HelloWnd helloWnd = new HelloWnd();
             helloWnd.Closing += HelloWnd_Closing;
 
-            helloWnd.Show();
+            helloWnd.ShowDialog();
 
         }
 
