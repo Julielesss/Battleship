@@ -53,7 +53,6 @@ namespace Battleship
                 (new ThreadStart(() => changeStep(false)));
             Thread.Sleep(500);
             Network.Send(new MessageShot() { point = sender.Position } as BaseMessage);
-
         }
 
 

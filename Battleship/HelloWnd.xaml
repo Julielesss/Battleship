@@ -5,26 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Battleship"
         mc:Ignorable="d"
-        Height="150" Width="500"
+        Height="400" Width="640"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="{StaticResource shar}">
+    <Window.Resources>
+        <Style x:Key="Game">
+            <Setter Property="Control.FontFamily" Value="Verdana" />
+            <Setter Property="Control.Background" Value="#00ff0000"/>
+            <Setter Property="Control.BorderBrush" Value="White"/>
+            <Setter Property="Control.FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Control.VerticalAlignment" Value="Top" />
+    
+        </Style>
+        <Style x:Key="Text">
+            <Setter Property="Control.Background" Value="#00ff0000"/>
+            <Setter Property="Control.Foreground" Value="DarkGreen" />
+            <Setter Property="Control.BorderBrush" Value="DarkGreen"/>
+            <Setter Property="Control.FontFamily" Value="Segoe Script"/>
+            <Setter Property="Control.FontSize" Value="40"/>
+            <Setter Property="Control.FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Control.BorderThickness" Value="0" />
+        </Style>
+    </Window.Resources>
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="1.3*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1,25*"></ColumnDefinition>
             <ColumnDefinition ></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1,25*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Name="TextBlock" Grid.Row="0" Grid.Column="0" >
-           <LineBreak/>
+        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" Source="{StaticResource light}" HorizontalAlignment="Center"  VerticalAlignment="Stretch" Stretch="Fill"/>
+        <TextBlock Name="TextBlock" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Style="{StaticResource Text}" Margin="25,0,-25,0"  >
         </TextBlock>
-        <TextBox Name="textBox" Grid.Row="0" Grid.Column="1" Height="27" TextChanged="TextBox_TextChanged" >
+        <TextBox Name="textBox"  Style="{StaticResource Text}"  Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" TextAlignment="Center" Height="50" TextChanged="TextBox_TextChanged" SelectionBrush="#2E7435" FocusVisualStyle="{DynamicResource Text}" >
         </TextBox>
-        <Button Name="CreateBtn" Tag="Start" Content ="Создать игру" Height="50" Width="150" Grid.Row="1" Grid.Column="0" Click="CreateBtn_Click"/>
-        <Button Name="ConnectBtn" Tag="Start" Content="Присоединиться к игре" Height="50" Width="150" Grid.Row="1" Grid.Column="2" Click="ConnectBTN_Click">
+        <Button Name="CreateBtn" Tag="Start" Height="120" Width="200" Style="{StaticResource Game}" Grid.Row="2" Grid.Column="0" Click="CreateBtn_Click">
+            <Image Height="120" Width="200" Source="{StaticResource CreateGameBTN}" />
+        </Button>
+        <Button Name="ConnectBtn" Tag="Start"  Height="120" Width="200" Style="{StaticResource Game}" Grid.Row="2" Grid.Column="2" Click="ConnectBTN_Click">
+            <Image Height="120" Width="200" Source="{StaticResource ConnectBTN}"/>
         </Button>
         <Label Name="lblState" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="144"/>
     </Grid>

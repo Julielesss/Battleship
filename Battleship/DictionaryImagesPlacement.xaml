@@ -16,4 +16,14 @@
     <BitmapImage x:Key="yellowSquare" UriSource="Images\yellow.jpg"></BitmapImage>
     <BitmapImage x:Key="redSquare" UriSource="Images\red.jpg"></BitmapImage>
     <BitmapImage x:Key="pastSquare" UriSource="Images\Past.jpg"></BitmapImage>
+
+    <BitmapImage x:Key="CreateGameBTN" UriSource="Images\CreateGameBTN.png"></BitmapImage>
+    <BitmapImage x:Key="ConnectBTN" UriSource="Images\ConnectBTN.png"></BitmapImage>
+    <BitmapImage x:Key="light" UriSource="Images\Light.png"></BitmapImage>
+    <BitmapImage x:Key="shar" UriSource="Images\Shar.png"></BitmapImage>
+
+    <BitmapImage x:Key="fon" UriSource="Images\Fon.jpg"></BitmapImage>
+    <BitmapImage x:Key="fon2" UriSource="Images\Fon2.png"></BitmapImage>
+    <BitmapImage x:Key="fon3" UriSource="Images\Fon3.png"></BitmapImage>
+
 </ResourceDictionary>
