@@ -47,7 +47,6 @@ namespace Battleship
                     {
                         Task taskConnect = new Task(() => TcpConnect(remoteIp.Address), token);
                         taskConnect.Start();
-                        //TcpConnect(remoteIp.Address);
                         break;
                     }
                 }

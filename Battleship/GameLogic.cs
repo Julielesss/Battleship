@@ -97,7 +97,7 @@ namespace Battleship
             battle.clickItem(sender, e);
         }
 
-
+   
         private void changeState(State st)
         {
             state = st;
@@ -170,8 +170,6 @@ namespace Battleship
                        { grdPlacement.Visibility = Visibility.Hidden; changeState(new StateBattle(this));
                            Start();
                        }));
-
-             // мб это отдельный метод окончания состояния
         }
 
     }

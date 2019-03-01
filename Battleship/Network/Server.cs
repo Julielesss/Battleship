@@ -67,7 +67,7 @@ namespace Battleship
                     tcpClient = tcpServer.AcceptTcpClient();
                     stream = tcpClient.GetStream();
                     ConnectedEvent?.Invoke();
-                    Receive(); // посмотреть, в каком потоке вызывается
+                    Receive();
                     break;
                 }
                 Thread.Sleep(1000);

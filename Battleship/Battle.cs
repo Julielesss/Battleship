@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace Battleship
 {
-    class Battle //Батл-бубатл
+    class Battle
     {
         Field myField;
         Field enemyField;
@@ -50,9 +50,7 @@ namespace Battleship
             Application.Current.Dispatcher.BeginInvoke
                 (new ThreadStart(() => { changeStep(false); sender.Focusable = sender.IsEnabled = false; }));
 
-           // Thread.Sleep(500);
             Network.Send(new MessageShot() { point = sender.Position } as BaseMessage);
-
         }
 
 

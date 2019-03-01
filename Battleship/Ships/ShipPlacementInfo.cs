@@ -11,7 +11,7 @@ namespace Battleship
 {
     class ShipPlacementInfo
     {
-        public ShipsTypes typeShip { get; } // нужна ли такая вложенность? Может просто хранить поля из структуры здесь? будет ли повторное использование структуры 
+        public ShipsTypes typeShip { get; }
         Button btnChoiceShip;
         public string imgPath { get; private set; }
 
@@ -41,7 +41,7 @@ namespace Battleship
         }
         public bool Placed()
         {
-            typeShip.Placed(); // если заменить класс на структуру, значение останется прежним
+            typeShip.Placed();
             return checkCount();
         }
 

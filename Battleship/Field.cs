@@ -20,7 +20,6 @@ namespace Battleship
 
         public Field()
         {
-           // items = new Item[10, 10];
             ships = new List<Ship>();
         }
         public void Create(Item[,] arr)

@@ -85,7 +85,6 @@ namespace Battleship
                         Application.Current.Dispatcher.BeginInvoke(new ThreadStart(() =>
                         {
                             field.Items[X1, Y1].IsEnabled = false;
-                            //field.Items[X1, Y1].Status = PointStatus.past;
                          }));
                 }
             }

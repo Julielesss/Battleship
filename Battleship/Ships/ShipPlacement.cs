@@ -44,8 +44,6 @@ namespace Battleship
             ships.Add(new ShipPlacementInfo(new ShipsTypes(3, 2), three));
             ships.Add(new ShipPlacementInfo(new ShipsTypes(4, 1), four));
             grdButtonsPlacement = gr;
-
-            //selectedShip = ships.Last();
         }
 
         public void ChangePosition()
@@ -81,9 +79,7 @@ namespace Battleship
                     for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
                     {
                         if (!myField.Items[(int)p.X+i , (int)p.Y ].IsEnabled)
-                        {
                             return false;
-                        }
                     }
                     return true;
                 }
@@ -96,9 +92,7 @@ namespace Battleship
                 for (int i = 0; i < selectedShip.typeShip.QuantityDeck; i++)
                 {
                     if (!myField.Items[(int)p.X , (int)p.Y+i ].IsEnabled)
-                    {
                         return false;
-                    }
                 }
                 return true;
             }
@@ -167,7 +161,7 @@ namespace Battleship
             if (selectedShip.Placed())
             {
                 ships.Remove(selectedShip);
-                selectedShip = null; // может выбирать другой корабль?
+                selectedShip = null;
                 ShowImageSelectedShip();
             }
 

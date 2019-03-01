@@ -29,7 +29,6 @@ namespace Battleship
         public abstract event Action ConnectedEvent;
 
 
-
         public void Send(BaseMessage message)
         {
             if (tcpClient == null)
@@ -40,7 +39,6 @@ namespace Battleship
 
             try
             {
-                //stream = tcpClient.GetStream();
                 formatter.Serialize(ms, message);
                 byte[] bytes = ms.ToArray();
                 stream?.Write(bytes, 0, bytes.Length);
@@ -79,7 +77,7 @@ namespace Battleship
             }
             catch(Exception e)
             {
-                //MessageBox.Show(e.ToString());
+                 MessageBox.Show(e.ToString());
             }
             finally
             {
